@@ -1,0 +1,42 @@
+name: Reformat PR code
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  reformat:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@755da8c3cf115ac066823e79a1e1788f8940201b
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          submodules: "true"
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@5ccb29d8773c3f3f653e1705f474dfaa8a06a912
+        with:
+          python-version: "3.9"
+
+      - name: install prerequisites
+        run: |
+          python -m pip install --upgrade pip wheel
+          python -m pip install -r ./piped/python/base-requirements/nox.txt
+
+      - name: Reformat
+        run: python -m nox -s reformat bot-package-diff
+
+      - uses: actions/upload-artifact@83fd05a356d7e2593de66fc9913b3002723633cb
+        with:
+          name: gogo.patch
+          path: gogo.patch
+
+      - name: Check diff file
+        run: python -m nox -s is-diff-file-empty
