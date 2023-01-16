@@ -277,37 +277,7 @@
   
   
     <li class="md-nav__item">
-      <a href="buttons/" class="md-nav__link">
-        Buttons
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="commands/" class="md-nav__link">
-        Commands
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="events/" class="md-nav__link">
+      <a href="1.events/" class="md-nav__link">
         Events
       </a>
     </li>
@@ -322,8 +292,8 @@
   
   
     <li class="md-nav__item">
-      <a href="linting/" class="md-nav__link">
-        Making sure everything works
+      <a href="2.commands/" class="md-nav__link">
+        Commands
       </a>
     </li>
   
@@ -337,8 +307,8 @@
   
   
     <li class="md-nav__item">
-      <a href="oauth2/" class="md-nav__link">
-        Oauth2
+      <a href="3.buttons/" class="md-nav__link">
+        Buttons
       </a>
     </li>
   
@@ -352,7 +322,7 @@
   
   
     <li class="md-nav__item">
-      <a href="permissions/" class="md-nav__link">
+      <a href="4.permissions/" class="md-nav__link">
         Permissions
       </a>
     </li>
@@ -367,7 +337,22 @@
   
   
     <li class="md-nav__item">
-      <a href="users/" class="md-nav__link">
+      <a href="5.rest/" class="md-nav__link">
+        REST
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="6.users/" class="md-nav__link">
         Users
       </a>
     </li>
@@ -382,8 +367,38 @@
   
   
     <li class="md-nav__item">
-      <a href="webhooks/" class="md-nav__link">
+      <a href="7.webhooks/" class="md-nav__link">
         Webhooks
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="8.linting/" class="md-nav__link">
+        Making sure everything works
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="9.oauth2/" class="md-nav__link">
+        Oauth2
       </a>
     </li>
   
@@ -434,11 +449,20 @@ Python yet then I recommend trying a basics course (like
 <a href="https://realpython.com/learning-paths/python-basics/">Real Python</a>) before using
 Hikari as libraries like this can be challenging to use without that foundational knowledge.</p>
 <p>First things we should work out what type of bot you want to create.</p>
-<div class="highlight"><pre><span></span><code><span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
 </code></pre></div>
+<p>Gateway bots are what you'll most likely want. These allow you to listen for generic
+actions happening on Discord by listening for <a class="autorefs autorefs-internal" href="1.events/#events">events</a>. All a gateway bot requires
+to work is an internet connection which can reach Discord.</p>
+<p>It comes with an in-memory [cache][]
+intents
+cache config
+rest config</p>
 <p><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot">hikari.GatewayBot</a></p>
-<div class="highlight"><pre><span></span><code><span class="n">hikari</span><span class="o">.</span><span class="n">RESTBot</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">RESTBot</span><span class="p">(</span><span class="n">bot_token</span><span class="p">)</span>
 </code></pre></div>
+<p>There's a bit more to the REST bot then may first meets the eye.</p>
+<p>ports, needing to put it behind a reverse proxy with https which is best done in a contanorised setup with isolated n etworks</p>
 <p><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/rest_bot/#hikari.impl.rest_bot.RESTBot">hikari.RESTBot</a></p>
 
 
@@ -461,13 +485,13 @@ Hikari as libraries like this can be challenging to use without that foundationa
       
       
         
-        <a href="buttons/" class="md-footer__link md-footer__link--next" aria-label="Next: Buttons" rel="next">
+        <a href="1.events/" class="md-footer__link md-footer__link--next" aria-label="Next: Events" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Buttons
+              Events
             </div>
           </div>
           <div class="md-footer__button md-icon">
