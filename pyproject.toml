@@ -53,7 +53,7 @@ hide = [
     "test-coverage",
     "verify-types",
 ]
-top_level_targets = ["./doc_src"]
+top_level_targets = ["./docs_src"]
 
 [tool.piped.github_actions.freeze_for_pr]
 [tool.piped.github_actions.lint]
