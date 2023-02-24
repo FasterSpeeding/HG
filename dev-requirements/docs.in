@@ -1,0 +1,2 @@
+-r ../piped/python/base-requirements/docs.in
+pymdown-extensions>=9.10b2
