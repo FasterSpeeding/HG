@@ -1,4 +1,4 @@
-name: Lint
+name: Type check
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  lint:
+  type-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,11 +34,5 @@ jobs:
           python -m pip install --upgrade pip wheel
           python -m pip install -r ./piped/python/base-requirements/nox.txt
 
-      - name: Lint markup
-        run: python -m nox -s verify-markup
-
-      - name: Check spelling
-        run: python -m nox -s spell-check
-
-      - name: Lint with flake8
-        run: python -m nox -s flake8
+      - name: Run type checker
+        run: python -m nox -s type-check
