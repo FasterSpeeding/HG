@@ -1,4 +1,5 @@
 -r ../piped/python/base-requirements/nox.in
 -r ../piped/python/base-requirements/type-checking.in
-hikari-tanjun>=2.11.0
+agraffe>=0.6
+hikari-tanjun>=2.11
 hikari-yuyo>=1.8.0a1
