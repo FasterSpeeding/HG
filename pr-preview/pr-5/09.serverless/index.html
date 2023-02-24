@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../02.commands/">
+        <link rel="prev" href="../08.oauth2/">
       
       
-        <link rel="next" href="../04.permissions/">
+        <link rel="next" href="../10.voice/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.14">
     
     
       
-        <title>Buttons - A h'y Hikari guide</title>
+        <title>Serverless - A h'y Hikari guide</title>
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#buttons" class="md-skip">
+        <a href="#serverless" class="md-skip">
           Skip to content
         </a>
       
@@ -147,7 +147,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Buttons
+              Serverless
             
           </span>
         </div>
@@ -254,7 +254,7 @@
   
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-        Welcome
+        Getting started
       </a>
     </li>
   
@@ -296,21 +296,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Buttons
+    <li class="md-nav__item">
+      <a href="../03.components/" class="md-nav__link">
+        Components
       </a>
-      
     </li>
   
 
@@ -383,22 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../08.linting/" class="md-nav__link">
-        Making sure everything works
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09.oauth2/" class="md-nav__link">
+      <a href="../08.oauth2/" class="md-nav__link">
         Oauth2
       </a>
     </li>
@@ -411,10 +386,35 @@
 
   
   
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Serverless
+      </a>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
   
     <li class="md-nav__item">
-      <a href="../10.serverless/" class="md-nav__link">
-        Serverless
+      <a href="../10.voice/" class="md-nav__link">
+        Voice
       </a>
     </li>
   
@@ -453,7 +453,20 @@
                   
 
 
-<h1 id="buttons">Buttons<a class="headerlink" href="#buttons" title="Permanent link">#</a></h1>
+<h1 id="serverless">Serverless<a class="headerlink" href="#serverless" title="Permanent link">#</a></h1>
+<p>while Hikari's standard RESTBot implementation works by running an AIOHTTP serverthis isn't the only way you can listen to interactions as a REST server.</p>
+<p>The utility library <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a> provides an <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/asgi/#yuyo.asgi.AsgiBot">ASGI implementation of RESTBot</a> which allows for running an interaction server  </p>
+<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="n">yuyo</span><span class="o">.</span><span class="n">modals</span><span class="o">.</span><span class="n">ModalClient</span><span class="o">.</span><span class="n">from_gateway_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
+<span class="n">yuyo</span><span class="o">.</span><span class="n">ComponentClient</span><span class="o">.</span><span class="n">from_gateway_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
+<span class="n">tanjun</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">from_gateway_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+
+<span class="c1"># ... Setup bot</span>
+
+<span class="n">entry_point</span> <span class="o">=</span> <span class="n">agraffe</span><span class="o">.</span><span class="n">Agraffe</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
+</code></pre></div>
 
 
 
