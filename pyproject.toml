@@ -42,7 +42,6 @@ allow_redefinition = true
 disable_error_code = ["type-abstract"]
 
 [tool.piped]
-bot_actions = ["Resync piped", "Reformat PR code"]
 default_sessions = ["reformat", "verify-markup",  "flake8", "spell-check",  "type-check"]
 hide = [
     "slot-check",
