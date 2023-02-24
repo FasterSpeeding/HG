@@ -1,4 +1,4 @@
-# Welcome
+# Getting started
 
 Hikari is a powerful Python library which lets you program bots to do all sorts of things on Discord.
 
@@ -15,8 +15,9 @@ Hikari as libraries like this can be challenging to use without that foundationa
 
 First things we should work out what type of bot you want to create.
 
+
 ```py
-bot = hikari.GatewayBot(bot_token)
+--8<-- "./docs_src/index.py:23:38"
 ```
 
 Gateway bots are what you'll most likely want. These allow you to listen for generic
@@ -32,10 +33,11 @@ rest config
 
 
 ```py
-bot = hikari.RESTBot(bot_token)
+--8<-- "./docs_src/index.py:17:19"
 ```
 
-There's a bit more to the REST bot then may first meets the eye.
+While there's a lot less direct configuration to RESTBots than Gateway bot, there's a bit
+more to getting it working than with Gateway bot.
 
 ports, needing to put it behind a reverse proxy with https which is best done in a contanorised setup with isolated n etworks
 
