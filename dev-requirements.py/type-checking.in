@@ -1,0 +1,5 @@
+-r ./tests.in
+-r ../piped/python/base-requirements/nox.in
+-r ../piped/python/base-requirements/type-checking.in
+hikari-tanjun>=2.11.0
+hikari-yuyo>=1.8.0a1
