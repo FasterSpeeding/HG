@@ -47,7 +47,7 @@ RESTBot is behind (Discord won't accept a raw IP address). You should keep the R
 reverse proxy with ssl enabled locally instead of exposing it straight to the public internet to
 keep the payloads encrypted in-transit.
 
-![interaction_url](./images/interaction_url.png)
+![interaction_url](../images/interaction_url.png)
 
 Once you've got this setup you'll want to enter the bot's web address here to tell Discord to start
 sending interaction requests to the bot. You should see a failed Ping request before a successful
