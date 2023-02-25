@@ -462,7 +462,7 @@ really important for properly grasping libraries like Hikari.</p>
 Python yet then I recommend trying a basics course (like
 <a href="https://realpython.com/learning-paths/python-basics/">Real Python</a>) before using
 Hikari as libraries like this can be challenging to use without that foundational knowledge.</p>
-<p>First things we should work out what type of bot you want to create.</p>
+<p>So to start off we should work out what type of bot you want to use.</p>
 <div class="highlight"><pre><span></span><code><span class="n">cache_components</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">hikari</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">CacheComponents</span><span class="o">.</span><span class="n">GUILD_CHANNELS</span>
     <span class="o">|</span> <span class="n">hikari</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">CacheComponents</span><span class="o">.</span><span class="n">ROLES</span>
@@ -471,7 +471,7 @@ Hikari as libraries like this can be challenging to use without that foundationa
 <span class="p">)</span>
 <span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">(</span>
     <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span>
-    <span class="n">cache_settings</span><span class="o">=</span><span class="n">hikari</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="n">CacheSettings</span><span class="p">(</span><span class="n">component</span><span class="o">=</span><span class="n">cache_components</span><span class="p">),</span>
+    <span class="n">cache_settings</span><span class="o">=</span><span class="n">hikari</span><span class="o">.</span><span class="n">impl</span><span class="o">.</span><span class="n">CacheSettings</span><span class="p">(</span><span class="n">components</span><span class="o">=</span><span class="n">cache_components</span><span class="p">),</span>
     <span class="n">intents</span><span class="o">=</span><span class="n">hikari</span><span class="o">.</span><span class="n">Intents</span><span class="o">.</span><span class="n">ALL_UNPRIVILEGED</span><span class="p">,</span>
 <span class="p">)</span>
 
@@ -480,22 +480,34 @@ Hikari as libraries like this can be challenging to use without that foundationa
 <span class="p">)</span>
 <span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">activity</span><span class="o">=</span><span class="n">activity</span><span class="p">)</span>
 </code></pre></div>
-<p>Gateway bots are what you'll most likely want. These allow you to listen for generic
-actions happening on Discord by listening for <a class="autorefs autorefs-internal" href="01.events/#events">events</a>. All a gateway bot requires
-to work is an internet connection which can reach Discord.</p>
-<p>It comes with an in-memory [cache][]
-intents
-cache config
-rest config</p>
-<p><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot">hikari.GatewayBot</a></p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">RESTBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<p>Gateway bots are what you'll most likely want. These allow you to listen for actions happening
+on Discord by subscribing to <a class="autorefs autorefs-internal" href="01.events/#events">events</a>. All a gateway bot needs to work is a bot token, and
+an internet connection which can reach Discord and maintain a persistent connection.</p>
+<p>The example above shows how you'd initiate and the <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot">standard gateway bot implementation</a>,
+it should be noted that the only required argument here is the token (first argument). The
+other arguments configure what entities this should cache in-process and the "intents" which
+indicate what events the bot wants to receive, more information on these can be found in <a class="autorefs autorefs-internal" href="01.events/#events">events</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">RESTBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">)</span>
 
-<span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;192.168.1.102&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s2">&quot;8000&quot;</span><span class="p">)</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;192.168.1.102&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
 </code></pre></div>
 <p>While there's a lot less direct configuration to RESTBots than Gateway bot, there's a bit
-more to getting it working than with Gateway bot.</p>
-<p>ports, needing to put it behind a reverse proxy with https which is best done in a contanorised setup with isolated n etworks</p>
-<p><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/rest_bot/#hikari.impl.rest_bot.RESTBot">hikari.RESTBot</a></p>
+more to getting it working than with Gateway bot. The RESTBot runs a REST server which
+is meant to receive interaction requests from Discord; this limits it to only knowing when
+users actively interact with the bot through using components and slash commands but also
+means that before this can work you need to have the network setup to allow Discord to
+connect to your bot.</p>
+<p>The example above shows how you'd initiate the <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/rest_bot/#hikari.impl.rest_bot.RESTBot">standard REST bot implementation</a>,
+it should be noted that the only requirement arguments here are the token (first argument) and the
+token type (second argument). Before this this'll work though you'll need to have that pesky
+networking setup; this means having a domain name with ssl support which points towards the IP the
+RESTBot is behind (Discord won't accept a raw IP address). You should keep the RESTBot behind a
+reverse proxy with ssl enabled locally instead of exposing it straight to the public internet to
+keep the payloads encrypted in-transit.</p>
+<p><img alt="interaction_url" src="images/interaction_url.png" /></p>
+<p>Once you've got this setup you'll want to enter the bot's web address here to tell Discord to start
+sending interaction requests to the bot. You should see a failed Ping request before a successful
+one in the logs as Discord validates the endpoint.</p>
 
 
 

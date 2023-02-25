@@ -454,19 +454,28 @@
 
 
 <h1 id="serverless">Serverless<a class="headerlink" href="#serverless" title="Permanent link">#</a></h1>
-<p>while Hikari's standard RESTBot implementation works by running an AIOHTTP serverthis isn't the only way you can listen to interactions as a REST server.</p>
-<p>The utility library <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a> provides an <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/asgi/#yuyo.asgi.AsgiBot">ASGI implementation of RESTBot</a> which allows for running an interaction server</p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-<span class="n">yuyo</span><span class="o">.</span><span class="n">modals</span><span class="o">.</span><span class="n">ModalClient</span><span class="o">.</span><span class="n">from_gateway_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
-<span class="n">yuyo</span><span class="o">.</span><span class="n">ComponentClient</span><span class="o">.</span><span class="n">from_gateway_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
-<span class="n">tanjun</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">from_gateway_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
+<p>While Hikari's standard RESTBot implementation works by running an AIOHTTP server, this isn't the only way you can listen to interactions as a REST server.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">)</span>
+<span class="n">tanjun</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">from_rest_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">bot_managed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># ... Other bot setup.</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">fastapi</span><span class="o">.</span><span class="n">FastAPI</span><span class="p">()</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;/bot&quot;</span><span class="p">,</span> <span class="n">bot</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<p>The utility library <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a> provides an <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/asgi/#yuyo.asgi.AsgiBot">ASGI implementation of RESTBot</a> which allows for running an interaction server with any ASGI v3 compatible REST server. The above examples shows this being used as
+a sub-app in a FastAPI server but <code>ASGIBot</code> can otherwise be used as the "app" when running using an ASGI web server
+implementation like Uvicorn or Gunicorn.</p>
+<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">)</span>
 
 <span class="c1"># ... Setup bot</span>
 
 <span class="n">entry_point</span> <span class="o">=</span> <span class="n">agraffe</span><span class="o">.</span><span class="n">Agraffe</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
 </code></pre></div>
+<p>Thanks to the flexibility of the ASGI standard, this can also be used with serverless frameworks people have
+implemented ASGI adapters for. The above example uses <a href="https://pypi.org/project/agraffe/">agraffe</a> to create
+an entry point for AWS Lambdas, Azure Functions, or Google Cloud Functions.</p>
 
 
 
