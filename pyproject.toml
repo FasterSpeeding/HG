@@ -61,7 +61,7 @@ path_ignore = "docs\\/images\\/.+"
 top_level_targets = ["./docs_src", "./noxfile.py"]
 
 [tool.piped.docs_copy_dirs]
-"./docs/images" = "./images"
+# "./docs/images" = "./images"
 
 [tool.piped.github_actions.freeze_for_pr]
 [tool.piped.github_actions.lint]
