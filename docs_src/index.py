@@ -13,13 +13,13 @@ import os
 import hikari
 
 
-def make_rest_bot() -> None:
-    bot = hikari.RESTBot(os.environ["TOKEN"].strip())
+def make_rest_bot():
+    bot = hikari.RESTBot(os.environ["TOKEN"].strip(), "Bot")
 
-    bot.run(path="192.168.1.102", port="8000")
+    bot.run(path="192.168.1.102", port=8000)
 
 
-def make_gateway_bot() -> None:
+def make_gateway_bot():
     cache_components = (
         hikari.api.CacheComponents.GUILD_CHANNELS
         | hikari.api.CacheComponents.ROLES
@@ -28,7 +28,7 @@ def make_gateway_bot() -> None:
     )
     bot = hikari.GatewayBot(
         os.environ["TOKEN"].strip(),
-        cache_settings=hikari.impl.CacheSettings(component=cache_components),
+        cache_settings=hikari.impl.CacheSettings(components=cache_components),
         intents=hikari.Intents.ALL_UNPRIVILEGED,
     )
 

@@ -13,32 +13,42 @@ Python yet then I recommend trying a basics course (like
 [Real Python](https://realpython.com/learning-paths/python-basics/)) before using
 Hikari as libraries like this can be challenging to use without that foundational knowledge.
 
-First things we should work out what type of bot you want to create.
-
+So to start off we should work out what type of bot you want to use.
 
 ```py
 --8<-- "./docs_src/index.py:23:38"
 ```
 
-Gateway bots are what you'll most likely want. These allow you to listen for generic
-actions happening on Discord by listening for [events][]. All a gateway bot requires
-to work is an internet connection which can reach Discord.
+Gateway bots are what you'll most likely want. These allow you to listen for actions happening
+on Discord by subscribing to [events][]. All a gateway bot needs to work is a bot token, and
+an internet connection which can reach Discord and maintain a persistent connection.
 
-It comes with an in-memory [cache][]
-intents
-cache config
-rest config
-
-[hikari.GatewayBot][hikari.impl.bot.GatewayBot]
-
+The example above shows how you'd initiate and the [standard gateway bot implementation][hikari.impl.bot.GatewayBot],
+it should be noted that the only required argument here is the token (first argument). The
+other arguments configure what entities this should cache in-process and the "intents" which
+indicate what events the bot wants to receive, more information on these can be found in [events][].
 
 ```py
 --8<-- "./docs_src/index.py:17:19"
 ```
 
 While there's a lot less direct configuration to RESTBots than Gateway bot, there's a bit
-more to getting it working than with Gateway bot.
+more to getting it working than with Gateway bot. The RESTBot runs a REST server which
+is meant to receive interaction requests from Discord; this limits it to only knowing when
+users actively interact with the bot through using components and slash commands but also
+means that before this can work you need to have the network setup to allow Discord to
+connect to your bot.
 
-ports, needing to put it behind a reverse proxy with https which is best done in a contanorised setup with isolated n etworks
+The example above shows how you'd initiate the [standard REST bot implementation][hikari.impl.rest_bot.RESTBot],
+it should be noted that the only requirement arguments here are the token (first argument) and the
+token type (second argument). Before this this'll work though you'll need to have that pesky
+networking setup; this means having a domain name with ssl support which points towards the IP the
+RESTBot is behind (Discord won't accept a raw IP address). You should keep the RESTBot behind a
+reverse proxy with ssl enabled locally instead of exposing it straight to the public internet to
+keep the payloads encrypted in-transit.
 
-[hikari.RESTBot][hikari.impl.rest_bot.RESTBot]
+![interaction_url](./images/interaction_url.png)
+
+Once you've got this setup you'll want to enter the bot's web address here to tell Discord to start
+sending interaction requests to the bot. You should see a failed Ping request before a successful
+one in the logs as Discord validates the endpoint.

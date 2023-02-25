@@ -1,6 +1,6 @@
 [tool.black]
 include = ".*pyi?$"
-line-length = 80
+line-length = 84
 skip-magic-trailing-comma = true
 target-version = ["py39"]
 
@@ -12,13 +12,17 @@ eradicate-aggressive = true
 force-future-annotations = true
 ignore-decorators = "overload"
 max-complexity = 20
-max-function-length = 90
-# Technically this is 80, but black has a policy of "1 or 2 over is fine if it is tidier", so we have to raise this.
-max-line-length = 10
+max-function-length = 100
+max-line-length = 100
 min_python_version = "3.9"
 pep585-activation = "always"
 show_source = false
 statistics = false
+ignore = ["D100", "D101", "D102", "D103", "E501", "FA100", "FA101", "F841", "INP001", "T101", "W503"]
+per-file-ignores = [
+    "docs_src/events.py: F821",
+    "noxfile.py: E402, F401, F402, F403",
+]
 
 [tool.isort]
 profile = "black"
@@ -39,7 +43,7 @@ warn_redundant_casts = false
 
 # compatibility with pyright
 allow_redefinition = true
-disable_error_code = ["type-abstract"]
+disable_error_code = ["no-untyped-def", "type-abstract"]
 
 [tool.piped]
 default_sessions = ["reformat", "verify-markup",  "flake8", "spell-check",  "type-check"]
@@ -52,7 +56,8 @@ hide = [
     "test-coverage",
     "verify-types",
 ]
-top_level_targets = ["./docs_src", "noxfile.py"]
+mypy_targets = ["docs_src"]
+top_level_targets = ["./docs_src", "./noxfile.py"]
 
 [tool.piped.github_actions.freeze_for_pr]
 [tool.piped.github_actions.lint]
@@ -74,3 +79,6 @@ pythonVersion = "3.9"
 typeCheckingMode = "strict"
 reportMissingModuleSource = "error"
 reportMissingTypeStubs = "error"
+
+reportUnusedFunction = "none"
+reportUnusedVariable = "none"

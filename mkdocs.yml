@@ -32,6 +32,7 @@ theme:
 
 markdown_extensions:
   - admonition
+  - attr_list
   - pymdownx.details
   - pymdownx.snippets:
       dedent_subsections: true
@@ -51,3 +52,6 @@ plugins:
             - https://docs.hikari-py.dev/en/latest/objects.inv
             - https://tanjun.cursed.solutions/objects.inv
             - https://yuyo.cursed.solutions/objects.inv
+
+watch:
+  - docs_src
