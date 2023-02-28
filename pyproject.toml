@@ -79,6 +79,7 @@ include = ["docs_src", "noxfile.py"]
 pythonVersion = "3.9"
 typeCheckingMode = "strict"
 reportMissingModuleSource = "error"  # Is only "warning" on strict mode.
+
 # Error code which are disabled even when general strict.
 reportShadowedImports = "error"
 reportCallInDefaultInitializer = "none"  # Ended up just complaining about cases where this was fine (e.g. timedeltas).
