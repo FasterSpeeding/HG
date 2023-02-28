@@ -90,6 +90,5 @@ reportUnnecessaryTypeIgnoreComment = "error"
 reportUnusedCallResult = "none"  # Enforces doing `_ = ...`.
 
 # Don't care about these
-
 reportUnusedFunction = "none"
 reportUnusedVariable = "none"
