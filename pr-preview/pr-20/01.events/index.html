@@ -691,7 +691,7 @@ approaches of handling listening to events.</p>
 
 <span class="nd">@component</span><span class="o">.</span><span class="n">with_listener</span><span class="p">()</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">on_member_event</span><span class="p">(</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">hikari</span><span class="o">.</span><span class="n">MemberCreateEvent</span><span class="p">,</span> <span class="n">hikari</span><span class="o">.</span><span class="n">MemberUpdateEvent</span><span class="p">]</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">MemberCreateEvent</span> <span class="o">|</span> <span class="n">hikari</span><span class="o">.</span><span class="n">MemberUpdateEvent</span>
 <span class="p">):</span>
     <span class="o">...</span>
 
