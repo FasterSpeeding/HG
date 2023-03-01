@@ -13,7 +13,11 @@ Python yet then I recommend trying a basics course (like
 [Real Python](https://realpython.com/learning-paths/python-basics/)) before using
 Hikari as libraries like this can be challenging to use without that foundational knowledge.
 
+### Making a bot
+
 So to start off we should work out what type of bot you want to use.
+
+##### Gateway bots
 
 ```py
 --8<-- "./docs_src/index.py:23:38"
@@ -27,6 +31,8 @@ The example above shows how you'd initiate and the [standard gateway bot impleme
 it should be noted that the only required argument here is the token (first argument). The
 other arguments configure what entities this should cache in-process and the "intents" which
 indicate what events the bot wants to receive, more information on these can be found in [events][].
+
+##### REST server bots
 
 ```py
 --8<-- "./docs_src/index.py:17:19"
