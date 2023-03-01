@@ -531,7 +531,7 @@ to the bot type you're using. More information on this can be found in Tanjun's 
 </code></pre></div>
 <p><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot.wait_for">GatewayBot.wait_for</a> can be used to wait for the next
 received event which matches a type and predicate (filter). In the above example we wait
-wait 60 seconds for a message update event where <code>event.message_id</code> matches a specific message
+60 seconds for a message update event where <code>event.message_id</code> matches a specific message
 and process the next edit or delete the message if we don't get a response in time.</p>
 <div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">stream_follow_ups</span><span class="p">(</span>
     <span class="n">bot</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">PartialChannel</span>
