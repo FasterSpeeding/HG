@@ -260,9 +260,60 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Getting started
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         Getting started
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#making-a-bot" class="md-nav__link">
+    Making a bot
+  </a>
+  
+    <nav class="md-nav" aria-label="Making a bot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gateway-bots" class="md-nav__link">
+    Gateway bots
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rest-server-bots" class="md-nav__link">
+    REST server bots
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -438,6 +489,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#making-a-bot" class="md-nav__link">
+    Making a bot
+  </a>
+  
+    <nav class="md-nav" aria-label="Making a bot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gateway-bots" class="md-nav__link">
+    Gateway bots
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rest-server-bots" class="md-nav__link">
+    REST server bots
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -462,7 +548,9 @@ really important for properly grasping libraries like Hikari.</p>
 Python yet then I recommend trying a basics course (like
 <a href="https://realpython.com/learning-paths/python-basics/">Real Python</a>) before using
 Hikari as libraries like this can be challenging to use without that foundational knowledge.</p>
+<h3 id="making-a-bot">Making a bot<a class="headerlink" href="#making-a-bot" title="Permanent link">#</a></h3>
 <p>So to start off we should work out what type of bot you want to use.</p>
+<h5 id="gateway-bots">Gateway bots<a class="headerlink" href="#gateway-bots" title="Permanent link">#</a></h5>
 <div class="highlight"><pre><span></span><code><span class="n">cache_components</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">hikari</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">CacheComponents</span><span class="o">.</span><span class="n">GUILD_CHANNELS</span>
     <span class="o">|</span> <span class="n">hikari</span><span class="o">.</span><span class="n">api</span><span class="o">.</span><span class="n">CacheComponents</span><span class="o">.</span><span class="n">ROLES</span>
@@ -487,6 +575,7 @@ an internet connection which can reach Discord and maintain a persistent connect
 it should be noted that the only required argument here is the token (first argument). The
 other arguments configure what entities this should cache in-process and the "intents" which
 indicate what events the bot wants to receive, more information on these can be found in <a class="autorefs autorefs-internal" href="01.events/#events">events</a>.</p>
+<h5 id="rest-server-bots">REST server bots<a class="headerlink" href="#rest-server-bots" title="Permanent link">#</a></h5>
 <div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">RESTBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">)</span>
 
 <span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;192.168.1.102&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8000</span><span class="p">)</span>
