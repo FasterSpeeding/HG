@@ -292,9 +292,81 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Commands
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Commands
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#making-commands" class="md-nav__link">
+    Making commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Making commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slash-commands" class="md-nav__link">
+    Slash commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefix-commands" class="md-nav__link">
+    Prefix commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-menus" class="md-nav__link">
+    Context menus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-commands" class="md-nav__link">
+    Loading commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-into-clients" class="md-nav__link">
+    Loading into clients
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -440,6 +512,62 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#making-commands" class="md-nav__link">
+    Making commands
+  </a>
+  
+    <nav class="md-nav" aria-label="Making commands">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#slash-commands" class="md-nav__link">
+    Slash commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prefix-commands" class="md-nav__link">
+    Prefix commands
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#context-menus" class="md-nav__link">
+    Context menus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-commands" class="md-nav__link">
+    Loading commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#loading-into-clients" class="md-nav__link">
+    Loading into clients
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -454,8 +582,24 @@
 
 
 <h1 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">#</a></h1>
-<p>While you can make commands without Hikari, this guide
-Prioritise normal custom id match over prefix in components</p>
+<p>While you can make commands without Hikari, this guide is only going to cover
+using a command client to make them as they make it a lot easier.</p>
+<p>These examples will be using <a href="https://github.com/FasterSpeeding/Tanjun">Tanjun</a>.
+Tanjun is a command framework which wraps around Hikari to provide ways declare
+and handle both modern application (slash) commands, traditional message
+(prefix) commands, and context menus.</p>
+<h3 id="making-commands">Making commands<a class="headerlink" href="#making-commands" title="Permanent link">#</a></h3>
+<h5 id="slash-commands">Slash commands<a class="headerlink" href="#slash-commands" title="Permanent link">#</a></h5>
+<h5 id="prefix-commands">Prefix commands<a class="headerlink" href="#prefix-commands" title="Permanent link">#</a></h5>
+<h5 id="context-menus">Context menus<a class="headerlink" href="#context-menus" title="Permanent link">#</a></h5>
+<h3 id="loading-commands">Loading commands<a class="headerlink" href="#loading-commands" title="Permanent link">#</a></h3>
+<p>Tanjun doesn't let you load commands directly into its clients, instead you
+need to create a <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/components/#tanjun.components.Component">tanjun.Component</a> instance and
+load the commands into it then load that into the client.</p>
+<p>There's 2 different ways to load commands into a component:</p>
+<h3 id="loading-into-clients">Loading into clients<a class="headerlink" href="#loading-into-clients" title="Permanent link">#</a></h3>
+<p>For more information on Tanjun's features (including features not covered here) see its
+<a href="https://tanjun.cursed.solutions/usage/">usage guide</a>.</p>
 
 
 
