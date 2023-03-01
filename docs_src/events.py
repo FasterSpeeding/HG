@@ -92,7 +92,7 @@ def tanjun_listener():
 
     @component.with_listener()
     async def on_member_event(
-        event: hikari.MemberCreateEvent | hikari.MemberUpdateEvent
+        event: hikari.MemberCreateEvent | hikari.MemberUpdateEvent,
     ):
         ...
 
