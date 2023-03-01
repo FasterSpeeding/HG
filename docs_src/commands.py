@@ -15,21 +15,22 @@ import tanjun
 
 def slash_command_example():
     @tanchan.doc_parse.with_annotated_args
-    @tanjun.as_slash_command("name", "description")
+    @tanjun.as_slash_command("name", "description", ephemeral_default=True)
     async def slash_command(
         ctx: tanjun.abc.SlashContext,
         user: tanjun.annotations.User,
         reason: tanjun.annotations.Str | None = None,
     ) -> None:
-        await ctx.respond("Done")
+        await user.ban(reason=reason)
+        await ctx.respond("Successfully banned {user}")
 
 
 def slash_command_group_example():
-    slash_command_group = tanjun.slash_command_group("group_name", "description")
+    slash_command_group = tanjun.slash_command_group("group", "description")
 
     @slash_command_group.as_sub_command("name", "description")
     async def sub_command(ctx: tanjun.abc.SlashContext) -> None:
-        ...
+        await ctx.respond("Called `group name` command")
 
 
 def prefix_command_example():
