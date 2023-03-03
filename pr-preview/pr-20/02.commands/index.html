@@ -351,6 +351,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#checks" class="md-nav__link">
+    Checks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-annotated-types" class="md-nav__link">
+    More annotated types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#loading-commands" class="md-nav__link">
     Loading commands
   </a>
@@ -553,6 +567,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#checks" class="md-nav__link">
+    Checks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#more-annotated-types" class="md-nav__link">
+    More annotated types
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#loading-commands" class="md-nav__link">
     Loading commands
   </a>
@@ -590,16 +618,73 @@ and handle both modern application (slash) commands, traditional message
 (prefix) commands, and context menus.</p>
 <h3 id="making-commands">Making commands<a class="headerlink" href="#making-commands" title="Permanent link">#</a></h3>
 <h5 id="slash-commands">Slash commands<a class="headerlink" href="#slash-commands" title="Permanent link">#</a></h5>
+<p>Slash commands are the commands you'll see in Discord when you start by "/" in
+the message box.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@tanchan</span><span class="o">.</span><span class="n">doc_parse</span><span class="o">.</span><span class="n">with_annotated_args</span>
+<span class="nd">@tanchan</span><span class="o">.</span><span class="n">doc_parse</span><span class="o">.</span><span class="n">as_slash_command</span><span class="p">(</span>
+    <span class="n">default_to_ephemeral</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">dm_enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">default_member_permissions</span><span class="o">=</span><span class="n">hikari</span><span class="o">.</span><span class="n">Permissions</span><span class="o">.</span><span class="n">BAN_MEMBERS</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">ban_user</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">SlashContext</span><span class="p">,</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">User</span><span class="p">,</span>
+    <span class="n">reason</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">Str</span> <span class="o">|</span> <span class="n">hikari</span><span class="o">.</span><span class="n">UndefinedType</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ban a user.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    user</span>
+<span class="sd">        The user to ban.</span>
+<span class="sd">    reason</span>
+<span class="sd">        Why they&#39;re being banned.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">assert</span> <span class="n">ctx</span><span class="o">.</span><span class="n">guild_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">rest</span><span class="o">.</span><span class="n">ban_member</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">guild_id</span><span class="p">,</span> <span class="n">user</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="n">reason</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="n">hikari</span><span class="o">.</span><span class="n">NotFoundError</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;User doesn&#39;t exist!!!&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="n">hikari</span><span class="o">.</span><span class="n">ForbiddenError</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;I Cannot do that!!!&quot;</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully banned </span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="find_intents_1" src="../images/slash_command_example_1.png" width="49%" />
+<img alt="find_intents_1" src="../images/slash_command_example_2.png" width="49%" /></p>
+<p>There's a few things going on in this example.</p>
+<p>First off, <a class="autorefs autorefs-external" href="https://tanchan.cursed.solutions/reference/doc_parse/#tanchan.doc_parse.as_slash_command">tanchan.doc_parse.as_slash_command</a> is used to create a command
+by wrapping a command callback while using the callback's name (ban_user) as
+the command's name and using the first line of its docstring as the slash
+command's description.</p>
+<p>Then <a class="autorefs autorefs-external" href="https://tanchan.cursed.solutions/reference/doc_parse/#tanchan.doc_parse.with_annotated_args">tanchan.doc_parse.with_annotated_args</a> parses the function's parameter
+type-hints to work out the slash command's options while parsing per-option
+descriptions from the docstring's "Parameters" section.</p>
+<p>It should be noted that <a href="https://github.com/FasterSpeeding/Tan-chan">Tanchan</a>
+is a separate optional utility library which builds ontop of the system tanjun
+provides in <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/annotations/#tanjun.annotations">tanjun.annotations</a> to add support for docstring parsing.</p>
+<div class="highlight"><pre><span></span><code><span class="n">slash_command_group</span> <span class="o">=</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">slash_command_group</span><span class="p">(</span><span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span>
+
+<span class="nd">@slash_command_group</span><span class="o">.</span><span class="n">as_sub_command</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">sub_command</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">SlashContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;Called `group name` command&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h5 id="prefix-commands">Prefix commands<a class="headerlink" href="#prefix-commands" title="Permanent link">#</a></h5>
 <h5 id="context-menus">Context menus<a class="headerlink" href="#context-menus" title="Permanent link">#</a></h5>
+<h3 id="checks">Checks<a class="headerlink" href="#checks" title="Permanent link">#</a></h3>
+<h3 id="more-annotated-types">More annotated types<a class="headerlink" href="#more-annotated-types" title="Permanent link">#</a></h3>
 <h3 id="loading-commands">Loading commands<a class="headerlink" href="#loading-commands" title="Permanent link">#</a></h3>
 <p>Tanjun doesn't let you load commands directly into its clients, instead you
 need to create a <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/components/#tanjun.components.Component">tanjun.Component</a> instance and
 load the commands into it then load that into the client.</p>
 <p>There's 2 different ways to load commands into a component:</p>
 <h3 id="loading-into-clients">Loading into clients<a class="headerlink" href="#loading-into-clients" title="Permanent link">#</a></h3>
-<p>For more information on Tanjun's features (including features not covered here) see its
-<a href="https://tanjun.cursed.solutions/usage/">usage guide</a>.</p>
+<p>For more information on Tanjun's features (including features not covered here and
+other ways to declare commands) see its <a href="https://tanjun.cursed.solutions/usage/">usage guide</a>.</p>
 
 
 
