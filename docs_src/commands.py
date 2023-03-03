@@ -15,14 +15,38 @@ import tanjun
 
 def slash_command_example():
     @tanchan.doc_parse.with_annotated_args
-    @tanjun.as_slash_command("name", "description", ephemeral_default=True)
-    async def slash_command(
+    @tanchan.doc_parse.as_slash_command(
+        default_to_ephemeral=True,
+        dm_enabled=False,
+        default_member_permissions=hikari.Permissions.BAN_MEMBERS,
+    )
+    async def ban_user(
         ctx: tanjun.abc.SlashContext,
         user: tanjun.annotations.User,
-        reason: tanjun.annotations.Str | None = None,
+        reason: tanjun.annotations.Str | hikari.UndefinedType = hikari.UNDEFINED,
     ) -> None:
-        await user.ban(reason=reason)
-        await ctx.respond("Successfully banned {user}")
+        """Ban a user.
+
+        Parameters
+        ----------
+        user
+            The user to ban.
+        reason
+            Why they're being banned.
+        """
+        assert ctx.guild_id is not None
+
+        try:
+            await ctx.rest.ban_member(ctx.guild_id, user, reason=reason)
+
+        except hikari.NotFoundError:
+            await ctx.respond("User doesn't exist!!!")
+
+        except hikari.ForbiddenError:
+            await ctx.respond("I Cannot do that!!!")
+
+        else:
+            await ctx.respond(f"Successfully banned {user}")
 
 
 def slash_command_group_example():
