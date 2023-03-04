@@ -88,8 +88,7 @@ def user_menu_example():
 
 
 def message_menu_example():
-    @tanjun.with_guild_check
-    @tanjun.as_message_menu("Archive")
+    @tanjun.as_message_menu("Archive", dm_enabled=False)
     async def message_menu(
         ctx: tanjun.abc.MenuContext, message: hikari.Message
     ) -> None:
