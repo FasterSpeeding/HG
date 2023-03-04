@@ -734,6 +734,21 @@ seconds if it still exists.</p>
     <span class="c1"># ... Thing logic</span>
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Thing done to </span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
+<p>When you want to use a command callback for multiple commands types there are a few
+things you'll have to note. The bases classes of <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.Context">tanjun.abc.Context</a> or
+<a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.AppCommandContext">tanjun.abc.AppCommandContext</a> (if this is only being used for slash and menu
+commands) should be used to type the first argument as these are base classes
+which only have cross-compatible features present (e.g. ephemeral responses
+are not implemented for the base <code>Context</code> as this isn't supported by message
+commands).</p>
+<p>Command decorators like <a class="autorefs autorefs-external" href="https://tanchan.cursed.solutions/reference/doc_parse/#tanchan.doc_parse.with_annotated_args">tanchan.doc_parse.with_annotated_args</a> and the
+<code>with_{}_check</code> decorators present in <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/checks/#tanjun.checks">tanjun.checks</a> come with an optional
+<code>follow_wrapped</code> argument. Setting this to <a class="autorefs autorefs-external" href="https://docs.python.org/3.9/library/constants.html#True">True</a> will make it apply the
+decorator's change to every compatible command declaration in that decorator
+chain (rather than just the one it's directly on).</p>
+<p>Since context menus take their only value (the user or message) positionally as
+the second argument you'll have to make sure the relevant option can be passed
+both positionally (as the 2nd argument) and by its name.</p>
 <h3 id="checks">Checks<a class="headerlink" href="#checks" title="Permanent link">#</a></h3>
 <h3 id="more-annotated-types">More annotated types<a class="headerlink" href="#more-annotated-types" title="Permanent link">#</a></h3>
 <h3 id="loading-commands">Loading commands<a class="headerlink" href="#loading-commands" title="Permanent link">#</a></h3>
@@ -755,12 +770,20 @@ load the commands into it then load that into the client.</p>
 
 <span class="n">component</span><span class="o">.</span><span class="n">add_command</span><span class="p">(</span><span class="n">other_command</span><span class="p">)</span>
 </code></pre></div>
+<p>If you build the component first then you can use the
+<a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/components/#tanjun.components.Component.add_command">Component.add_command</a> and
+<a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/components/#tanjun.components.Component.with_command">Component.with_command</a> methods
+to add commands to the component directly. <code>with_command</code> supports
+<code>follow_wrapped</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_slash_command</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">slash_command</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">SlashContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="o">...</span>
 
 <span class="n">component</span> <span class="o">=</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">Component</span><span class="p">()</span><span class="o">.</span><span class="n">load_from_scope</span><span class="p">()</span>
 </code></pre></div>
+<p>Alternatively, you can call <code>load_from_scope</code> at the end of the module to
+load command objects (plus some other objects like schedules) into the
+component from the module's top level automatically.</p>
 <h3 id="loading-into-clients">Loading into clients<a class="headerlink" href="#loading-into-clients" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="n">component</span> <span class="o">=</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">Component</span><span class="p">()</span>
 
@@ -768,6 +791,8 @@ load the commands into it then load that into the client.</p>
 
 <span class="n">loaders</span> <span class="o">=</span> <span class="n">component</span><span class="o">.</span><span class="n">make_loader</span><span class="p">()</span>
 </code></pre></div>
+<p>Component loaders give an easy way to load functionality and commands into a
+tanjun client from a module.</p>
 <div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">(</span><span class="s2">&quot;Token&quot;</span><span class="p">)</span>
 <span class="p">(</span>
     <span class="n">tanjun</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">from_gateway_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">declare_global_commands</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -777,6 +802,14 @@ load the commands into it then load that into the client.</p>
 
 <span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
+<p>Normally you'd load modules straight into the client as shown in the example above.
+<a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.Client.load_modules">Client.load_modules</a> loads from specific modules
+while <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.Client.load_directory">Client.load_directory</a> loads from the
+modules directly in a directory (no recursion). While <code>load_modules</code> takes python
+module paths (same paths you use in <code>import</code> syntax), <code>load_directory</code> takes a
+system path and the python module path for that directory as the keyword argument
+<code>namespace</code>. The namespace is appended onto python file names as
+<code>f"{namespace}.{path.name[:3]}"</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">(</span><span class="s2">&quot;Token&quot;</span><span class="p">)</span>
 <span class="n">client</span> <span class="o">=</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">from_gateway_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
 
@@ -789,6 +822,13 @@ load the commands into it then load that into the client.</p>
 
 <span class="n">bot</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </code></pre></div>
+<p>Tanjun also provides a standard hot reloader implementation which has a similar
+interface to <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.Client">Client</a> for marking modules to track and will
+reload or unload target modules when it detects a that its file has been changed.
+<a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/#tanjun.HotReloader">tanjun.HotReloader</a> will also redeclare application commands when they're
+changed unless <code>redeclare_cmds_after=None</code> is passed to its init. Whjen using </p>
+<p>Only one of these approaches should be used at the time since they'll conflict
+with eachother.</p>
 <p>For more information on Tanjun's features (including features not covered here and
 other ways to declare commands) see its <a href="https://tanjun.cursed.solutions/usage/">usage guide</a>.</p>
 
