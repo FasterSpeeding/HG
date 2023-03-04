@@ -394,13 +394,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#more-annotated-types" class="md-nav__link">
-    More annotated types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#loading-commands" class="md-nav__link">
     Loading commands
   </a>
@@ -411,6 +404,19 @@
   <a href="#loading-into-clients" class="md-nav__link">
     Loading into clients
   </a>
+  
+    <nav class="md-nav" aria-label="Loading into clients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#see-you-space-cowboy" class="md-nav__link">
+    See You Space Cowboy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -539,13 +545,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#more-annotated-types" class="md-nav__link">
-    More annotated types
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#loading-commands" class="md-nav__link">
     Loading commands
   </a>
@@ -556,6 +555,19 @@
   <a href="#loading-into-clients" class="md-nav__link">
     Loading into clients
   </a>
+  
+    <nav class="md-nav" aria-label="Loading into clients">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#see-you-space-cowboy" class="md-nav__link">
+    See You Space Cowboy
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -750,7 +762,16 @@ chain (rather than just the one it's directly on).</p>
 the second argument you'll have to make sure the relevant option can be passed
 both positionally (as the 2nd argument) and by its name.</p>
 <h3 id="checks">Checks<a class="headerlink" href="#checks" title="Permanent link">#</a></h3>
-<h3 id="more-annotated-types">More annotated types<a class="headerlink" href="#more-annotated-types" title="Permanent link">#</a></h3>
+<p>Checks are callbacks which decide whether a command or group of commands should
+run for a command execution context. There's a collection of checks in
+<a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/checks/#tanjun.checks">tanjun.checks</a> which can be applied to any command type.</p>
+<p>These can be added to commands through decorator calls (e.g. <code>@tanjun.with_guild_check</code>)
+or by calling <code>command.add_check(check)</code>.</p>
+<!-- ### More annotated types
+
+The message and slash command examples use Tanjun's [tanjun.annotations][] system to
+declare commands. -->
+
 <h3 id="loading-commands">Loading commands<a class="headerlink" href="#loading-commands" title="Permanent link">#</a></h3>
 <p>Tanjun doesn't let you load commands directly into its clients, instead you
 need to create a <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/components/#tanjun.components.Component">tanjun.Component</a> instance and
@@ -826,9 +847,10 @@ system path and the python module path for that directory as the keyword argumen
 interface to <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.Client">Client</a> for marking modules to track and will
 reload or unload target modules when it detects a that its file has been changed.
 <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/#tanjun.HotReloader">tanjun.HotReloader</a> will also redeclare application commands when they're
-changed unless <code>redeclare_cmds_after=None</code> is passed to its init. Whjen using</p>
+changed unless <code>redeclare_cmds_after=None</code> is passed to its init.</p>
 <p>Only one of these approaches should be used at the time since they'll conflict
 with eachother.</p>
+<h5 id="see-you-space-cowboy">See You Space Cowboy<a class="headerlink" href="#see-you-space-cowboy" title="Permanent link">#</a></h5>
 <p>For more information on Tanjun's features (including features not covered here and
 other ways to declare commands) see its <a href="https://tanjun.cursed.solutions/usage/">usage guide</a>.</p>
 
