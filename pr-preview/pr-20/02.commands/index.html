@@ -656,6 +656,7 @@ the message box.</p>
 <span class="sd">    reason</span>
 <span class="sd">        Why they&#39;re being banned.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># guild_id should never be None thanks to dm_enabled=False</span>
     <span class="k">assert</span> <span class="n">ctx</span><span class="o">.</span><span class="n">guild_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 
     <span class="k">try</span><span class="p">:</span>
