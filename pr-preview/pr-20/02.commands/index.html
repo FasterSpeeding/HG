@@ -319,43 +319,70 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#making-commands" class="md-nav__link">
-    Making commands
+  <a href="#making-slash-commands" class="md-nav__link">
+    Making Slash commands
   </a>
   
-    <nav class="md-nav" aria-label="Making commands">
+    <nav class="md-nav" aria-label="Making Slash commands">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#slash-commands" class="md-nav__link">
-    Slash commands
+  <a href="#ephemeral-responses" class="md-nav__link">
+    Ephemeral responses
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#message-commands" class="md-nav__link">
-    Message commands
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#context-menus" class="md-nav__link">
-    Context menus
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#multi-commands" class="md-nav__link">
-    Multi-commands
+  <a href="#slash-command-groups" class="md-nav__link">
+    Slash command groups
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-message-commands" class="md-nav__link">
+    Making message commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-context-menus" class="md-nav__link">
+    Making context menus
+  </a>
+  
+    <nav class="md-nav" aria-label="Making context menus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-context-menus" class="md-nav__link">
+    Message context menus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-context-menus" class="md-nav__link">
+    User context menus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-commands" class="md-nav__link">
+    Multi-commands
+  </a>
   
 </li>
       
@@ -542,43 +569,70 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#making-commands" class="md-nav__link">
-    Making commands
+  <a href="#making-slash-commands" class="md-nav__link">
+    Making Slash commands
   </a>
   
-    <nav class="md-nav" aria-label="Making commands">
+    <nav class="md-nav" aria-label="Making Slash commands">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#slash-commands" class="md-nav__link">
-    Slash commands
+  <a href="#ephemeral-responses" class="md-nav__link">
+    Ephemeral responses
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#message-commands" class="md-nav__link">
-    Message commands
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#context-menus" class="md-nav__link">
-    Context menus
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#multi-commands" class="md-nav__link">
-    Multi-commands
+  <a href="#slash-command-groups" class="md-nav__link">
+    Slash command groups
   </a>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-message-commands" class="md-nav__link">
+    Making message commands
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-context-menus" class="md-nav__link">
+    Making context menus
+  </a>
+  
+    <nav class="md-nav" aria-label="Making context menus">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-context-menus" class="md-nav__link">
+    Message context menus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-context-menus" class="md-nav__link">
+    User context menus
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#multi-commands" class="md-nav__link">
+    Multi-commands
+  </a>
   
 </li>
       
@@ -632,8 +686,7 @@ using a command client to make them as they make it a lot easier.</p>
 Tanjun is a command framework which wraps around Hikari to provide ways declare
 and handle both modern application (slash) commands, traditional message
 (prefix) commands, and context menus.</p>
-<h3 id="making-commands">Making commands<a class="headerlink" href="#making-commands" title="Permanent link">#</a></h3>
-<h5 id="slash-commands">Slash commands<a class="headerlink" href="#slash-commands" title="Permanent link">#</a></h5>
+<h3 id="making-slash-commands">Making Slash commands<a class="headerlink" href="#making-slash-commands" title="Permanent link">#</a></h3>
 <p>Slash commands are the commands you'll see in Discord when you start by "/" in
 the message box.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@tanchan</span><span class="o">.</span><span class="n">doc_parse</span><span class="o">.</span><span class="n">with_annotated_args</span>
@@ -673,18 +726,30 @@ the message box.</p>
 </code></pre></div>
 <p><img alt="find_intents_1" src="../images/slash_command_example_1.png" width="49%" />
 <img alt="find_intents_2" src="../images/slash_command_example_2.png" width="49%" /></p>
-<p>There's a few things going on in this example.</p>
+<p>There's a few things going on in this example:</p>
 <p>First off, <a class="autorefs autorefs-external" href="https://tanchan.cursed.solutions/reference/doc_parse/#tanchan.doc_parse.as_slash_command">tanchan.doc_parse.as_slash_command</a> is used to create a slash command
-by wrapping a command callback while using the callback's name ("ban_user") as
+by wrapping a command callback. This is using the callback's name ("ban_user") as
 the command's name and using the first line of its docstring as the slash
 command's description.</p>
 <p>Then <a class="autorefs autorefs-external" href="https://tanchan.cursed.solutions/reference/doc_parse/#tanchan.doc_parse.with_annotated_args">tanchan.doc_parse.with_annotated_args</a> parses the function's parameter
 type-hints to work out the slash command's options while parsing per-option
 descriptions from the docstring's "Parameters" section.</p>
-<p>The above example uses</p>
+<p>This example uses <code>default_member_permissions</code> to mark the command as
+limited to only members who have permission to ban users unless this
+configuration is overridden by guild staff. It also uses <code>dm_only</code> to
+marks the command as only working in guilds.</p>
 <p>It should be noted that <a href="https://github.com/FasterSpeeding/Tan-chan">Tanchan</a>
 is a separate optional utility library which builds on top of the system tanjun
 provides in <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/annotations/#tanjun.annotations">tanjun.annotations</a> to add support for docstring parsing.</p>
+<h5 id="ephemeral-responses">Ephemeral responses<a class="headerlink" href="#ephemeral-responses" title="Permanent link">#</a></h5>
+<p>The "only you can see this" responses you're seeing here are called
+ephemeral responses, these are unique to slash and context menu commands.
+While this example uses <code>default_to_ephemeral=True</code> to mark all the command's
+responses as ephemeral, you can also pass <code>ephemeral=True</code> while calling
+<a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.AppCommandContext.create_initial_response">AppCommandContext.create_initial_response</a>
+or <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.AppCommandContext.create_followup">AppCommandContext.create_followup</a>
+to mark individual responses as ephemeral.</p>
+<h5 id="slash-command-groups">Slash command groups<a class="headerlink" href="#slash-command-groups" title="Permanent link">#</a></h5>
 <div class="highlight"><pre><span></span><code><span class="n">slash_command_group</span> <span class="o">=</span> <span class="n">tanchan</span><span class="o">.</span><span class="n">doc_parse</span><span class="o">.</span><span class="n">slash_command_group</span><span class="p">(</span>
     <span class="s2">&quot;group&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span>
 <span class="p">)</span>
@@ -694,15 +759,15 @@ provides in <a class="autorefs autorefs-external" href="https://tanjun.cursed.so
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;`group name` command.&quot;&quot;&quot;</span>
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;Called `group name` command&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="slash_command_group_example.png" src="../images/slash_command_group_example.png" width="50%" /></p>
-<p>Since normal slash commands can't have spaces in their names you have to use
+<p><img alt="slash_command_group_example.png" src="../images/slash_command_group_example.png" /></p>
+<p>Since normal slash commands can't have spaces in their names, you have to use
 slash command "groups" to get spaces. These are limited to only being nested
-once (so a slash command group can be put in a top-level group but then can't
+once (so a slash command group can be put in a top-level group but can't then
 put a group in that sub-group) and some configuration is limited to top level
-commands so to see what you can configure for sub-commands see
+commands so for what you can configure for sub-commands see
 <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/commands/#tanjun.commands.slash.SlashCommandGroup.as_sub_command">SlashCommandGroup.as_sub_command</a> and
 <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/commands/#tanjun.commands.slash.SlashCommandGroup.make_sub_group">SlashCommandGroup.make_sub_group</a>.</p>
-<h5 id="message-commands">Message commands<a class="headerlink" href="#message-commands" title="Permanent link">#</a></h5>
+<h3 id="making-message-commands">Making message commands<a class="headerlink" href="#making-message-commands" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">with_annotated_args</span>
 <span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_message_command</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">message_command</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -716,16 +781,13 @@ commands so to see what you can configure for sub-commands see
 <span class="k">async</span> <span class="k">def</span> <span class="nf">sub_command</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="o">...</span>
 </code></pre></div>
-<h5 id="context-menus">Context menus<a class="headerlink" href="#context-menus" title="Permanent link">#</a></h5>
-<div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_user_menu</span><span class="p">(</span><span class="s2">&quot;Yeet user&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">user_menu</span><span class="p">(</span>
-    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MenuContext</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">InteractionMember</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="c1"># ... Yetting logic</span>
-    <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2"> got yeeted!&quot;</span><span class="p">,</span> <span class="n">delete_after</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">with_guild_check</span>
-<span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_message_menu</span><span class="p">(</span><span class="s2">&quot;Archive&quot;</span><span class="p">)</span>
+<h3 id="making-context-menus">Making context menus<a class="headerlink" href="#making-context-menus" title="Permanent link">#</a></h3>
+<p>Context menu commands are the simplest of the 3. These are the buttons you see
+when you right click on a user or message under "Apps". These have similar
+configuration to slash commands but cannot be nested, have more relaxed name
+restrictions and do not have descriptions nor options.</p>
+<h5 id="message-context-menus">Message context menus<a class="headerlink" href="#message-context-menus" title="Permanent link">#</a></h5>
+<div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_message_menu</span><span class="p">(</span><span class="s2">&quot;Archive&quot;</span><span class="p">,</span> <span class="n">dm_enabled</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">message_menu</span><span class="p">(</span>
     <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MenuContext</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">Message</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
@@ -742,7 +804,24 @@ commands so to see what you can configure for sub-commands see
 
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;Archived message&quot;</span><span class="p">,</span> <span class="n">delete_after</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </code></pre></div>
-<h5 id="multi-commands">Multi-commands<a class="headerlink" href="#multi-commands" title="Permanent link">#</a></h5>
+<p><img alt="find_intents_1" src="../images/message_menu_example.png" /></p>
+<p>There's message context menus which will always take
+<a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/messages/#hikari.messages.Message">hikari.Message</a> positionally as their 2nd argument.</p>
+<h5 id="user-context-menus">User context menus<a class="headerlink" href="#user-context-menus" title="Permanent link">#</a></h5>
+<div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_user_menu</span><span class="p">(</span><span class="s2">&quot;Yeet user&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">user_menu</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MenuContext</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">InteractionMember</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="c1"># ... Yetting logic</span>
+    <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2"> got yeeted!&quot;</span><span class="p">,</span> <span class="n">delete_after</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="find_intents_1" src="../images/user_menu_example.png" /></p>
+<p>And there's user context menus which will always take
+<a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/interactions/base_interactions/#hikari.interactions.base_interactions.InteractionMember">hikari.InteractionMember</a>
+positionally as their 2nd argument.</p>
+<p>These examples use <code>delete_after</code> to tell Tanjun to delete the response after 30
+seconds if it still exists.</p>
+<h3 id="multi-commands">Multi-commands<a class="headerlink" href="#multi-commands" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nd">@tanchan</span><span class="o">.</span><span class="n">doc_parse</span><span class="o">.</span><span class="n">with_annotated_args</span><span class="p">(</span><span class="n">follow_wrapped</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="nd">@tanchan</span><span class="o">.</span><span class="n">doc_parse</span><span class="o">.</span><span class="n">as_slash_command</span><span class="p">()</span>
 <span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_message_command</span><span class="p">(</span><span class="s2">&quot;meow command&quot;</span><span class="p">)</span>
