@@ -34,6 +34,7 @@ def slash_command_example():
         reason
             Why they're being banned.
         """
+        # guild_id should never be None thanks to dm_enabled=False
         assert ctx.guild_id is not None
 
         try:
