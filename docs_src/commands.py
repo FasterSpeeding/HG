@@ -50,39 +50,79 @@ def slash_command_example():
 
 
 def slash_command_group_example():
-    slash_command_group = tanjun.slash_command_group("group", "description")
+    slash_command_group = tanchan.doc_parse.slash_command_group(
+        "group", "description"
+    )
 
-    @slash_command_group.as_sub_command("name", "description")
-    async def sub_command(ctx: tanjun.abc.SlashContext) -> None:
+    @slash_command_group.as_sub_command()
+    async def name(ctx: tanjun.abc.SlashContext) -> None:
+        """`group name` command."""
         await ctx.respond("Called `group name` command")
 
 
-def prefix_command_example():
+def message_command_example():
+    @tanjun.annotations.with_annotated_args
     @tanjun.as_message_command("name")
     async def message_command(ctx: tanjun.abc.MessageContext) -> None:
         ...
 
 
-def prefix_command_group_example():
+def message_command_group_example():
     @tanjun.as_message_command_group("name")
     async def message_command_group(ctx: tanjun.abc.MessageContext) -> None:
         ...
 
+    @message_command_group.as_sub_command("meow")
+    async def sub_command(ctx: tanjun.abc.MessageContext) -> None:
+        ...
+
 
 def user_menu_example():
-    @tanjun.as_user_menu("name")
+    @tanjun.as_user_menu("Yeet user")
     async def user_menu(
         ctx: tanjun.abc.MenuContext, user: hikari.InteractionMember
     ) -> None:
-        ...
+        # ... Yetting logic
+        await ctx.respond(f"{user} got yeeted!", delete_after=30)
 
 
-def context_menu_example():
-    @tanjun.as_message_menu("name")
+def message_menu_example():
+    @tanjun.with_guild_check
+    @tanjun.as_message_menu("Archive")
     async def message_menu(
         ctx: tanjun.abc.MenuContext, message: hikari.Message
     ) -> None:
-        ...
+        # ... Archive logic
+        try:
+            await ctx.rest.delete_message(ctx.channel_id, message)
+
+        except hikari.NotFoundError:
+            pass
+
+        except hikari.ForbiddenError:
+            await ctx.respond("Couldn't delete message", delete_after=30)
+            return
+
+        await ctx.respond("Archived message", delete_after=30)
+
+
+def muti_command_example():
+    @tanchan.doc_parse.with_annotated_args(follow_wrapped=True)
+    @tanchan.doc_parse.as_slash_command()
+    @tanjun.as_message_command("meow command")
+    @tanjun.as_user_menu("meow command")
+    async def command(
+        ctx: tanjun.abc.Context, user: tanjun.annotations.User
+    ) -> None:
+        """Do a thing to a user.
+
+        Parameters
+        ----------
+        user
+            The user to do the thing to.
+        """
+        # ... Thing logic
+        await ctx.respond(f"Thing done to {user}")
 
 
 def load_from_scope():
