@@ -63,18 +63,24 @@ def slash_command_group_example():
 
 def message_command_example():
     @tanjun.annotations.with_annotated_args
-    @tanjun.as_message_command("name")
-    async def message_command(ctx: tanjun.abc.MessageContext) -> None:
+    @tanjun.as_message_command("meow")
+    async def message_command(
+        ctx: tanjun.abc.MessageContext, weebish: tanjun.annotations.Bool = False
+    ) -> None:
         ...
 
 
 def message_command_group_example():
-    @tanjun.as_message_command_group("name")
+    @tanjun.as_message_command_group("uwu group")
     async def message_command_group(ctx: tanjun.abc.MessageContext) -> None:
         ...
 
-    @message_command_group.as_sub_command("meow")
-    async def sub_command(ctx: tanjun.abc.MessageContext) -> None:
+    @tanjun.annotations.with_annotated_args
+    @message_command_group.as_sub_command("echo")
+    async def sub_command(
+        ctx: tanjun.abc.MessageContext,
+        content: tanjun.annotations.Greedy[tanjun.annotations.Str],
+    ) -> None:
         ...
 
 
