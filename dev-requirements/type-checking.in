@@ -4,3 +4,4 @@ agraffe>=0.6
 fastapi>=0.92.0
 hikari-tanjun>=2.11
 hikari-yuyo>=1.8.0a1
+tanchan>=0.2.2
