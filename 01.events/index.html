@@ -15,7 +15,7 @@
         <link rel="next" href="../02.commands/">
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.15">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.0">
     
     
       
@@ -23,7 +23,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.113286f1.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.402914a4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.a0c5b2b5.min.css">
@@ -126,7 +126,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="A h&#39;y Hikari guide" class="md-header__button md-logo" aria-label="A h'y Hikari guide" data-md-component="logo">
       
@@ -380,113 +382,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../03.components/" class="md-nav__link">
-        Components
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04.permissions/" class="md-nav__link">
-        Permissions
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05.rest/" class="md-nav__link">
-        REST
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06.users/" class="md-nav__link">
-        Users
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07.webhooks/" class="md-nav__link">
-        Webhooks
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../08.oauth2/" class="md-nav__link">
-        Oauth2
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../09.serverless/" class="md-nav__link">
         Serverless
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10.voice/" class="md-nav__link">
-        Voice
       </a>
     </li>
   
@@ -691,7 +588,7 @@ approaches of handling listening to events.</p>
 
 <span class="nd">@component</span><span class="o">.</span><span class="n">with_listener</span><span class="p">()</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">on_member_event</span><span class="p">(</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">hikari</span><span class="o">.</span><span class="n">MemberCreateEvent</span><span class="p">,</span> <span class="n">hikari</span><span class="o">.</span><span class="n">MemberUpdateEvent</span><span class="p">]</span>
+    <span class="n">event</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">MemberCreateEvent</span> <span class="o">|</span> <span class="n">hikari</span><span class="o">.</span><span class="n">MemberUpdateEvent</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="o">...</span>
 
@@ -745,7 +642,7 @@ callback's signature but otherwise matches <a class="autorefs autorefs-external"
     <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.2a6f1dda.min.js"></script>
+      <script src="../assets/javascripts/bundle.ce72ebac.min.js"></script>
       
     
   </body>
