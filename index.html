@@ -470,7 +470,7 @@ on Discord by subscribing to <a class="autorefs autorefs-internal" href="01.even
 an internet connection which can reach Discord and maintain a persistent connection.</p>
 <p>The example above shows how you'd initiate and the <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot">standard gateway bot implementation</a>,
 it should be noted that the only required argument here is the token (first argument). The
-other arguments configure what entities this should cache in-process and the "intents" which
+other arguments configure what entities this should cache in-process and the <a class="autorefs autorefs-internal" href="01.events/#intents">intents</a> which
 indicate what events the bot wants to receive, more information on these can be found in <a class="autorefs autorefs-internal" href="01.events/#events">events</a>.</p>
 <h5 id="rest-server-bots">REST server bots<a class="headerlink" href="#rest-server-bots" title="Permanent link">#</a></h5>
 <div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">RESTBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">)</span>
