@@ -675,19 +675,45 @@ commands so for what you can configure for sub-commands see
 <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/commands/#tanjun.commands.slash.SlashCommandGroup.as_sub_command">SlashCommandGroup.as_sub_command</a> and
 <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/commands/#tanjun.commands.slash.SlashCommandGroup.make_sub_group">SlashCommandGroup.make_sub_group</a>.</p>
 <h3 id="making-message-commands">Making message commands<a class="headerlink" href="#making-message-commands" title="Permanent link">#</a></h3>
+<p>Message commands are the classic command approach which listens for user
+messages which start with a certain prefix or bot mention and then processes
+the rest of the message's content for command execution.</p>
+<p>The <code>{GUILD}|{DM}_MESSAGES</code> <a class="autorefs autorefs-internal" href="../01.events/#intents">intent</a> has to be enabled for these
+commands to work and without the privileged
+<a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/intents/#hikari.intents.Intents.MESSAGE_CONTENT">hikari.Intents.MESSAGE_CONTENT</a> intent
+command execution will only work for mention prefixes.</p>
+<p>Since these match based on the prefix, you must also set some prefix for the
+client to match against using either <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/clients/#tanjun.clients.Client.add_prefix">tanjun.clients.Client.add_prefix</a> or
+by passing <code>mention_prefix=True</code> when initialising the bot (calling
+<a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/clients/#tanjun.clients.Client.from_gateway_bot">Client.from_gateway_bot</a>).</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">with_annotated_args</span>
-<span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_message_command</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">message_command</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_message_command</span><span class="p">(</span><span class="s2">&quot;meow&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">message_command</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MessageContext</span><span class="p">,</span> <span class="n">weebish</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">Bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="o">...</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_message_command_group</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">)</span>
+<p>The above example shows a message command that would be triggered by
+<code>{prefix}meow</code> and where the "weebish" argument can optionally be provided
+by sending <code>{prefix}weebish true</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_message_command_group</span><span class="p">(</span><span class="s2">&quot;uwu group&quot;</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">message_command_group</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="o">...</span>
 
-<span class="nd">@message_command_group</span><span class="o">.</span><span class="n">as_sub_command</span><span class="p">(</span><span class="s2">&quot;meow&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">sub_command</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="nd">@tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">with_annotated_args</span>
+<span class="nd">@message_command_group</span><span class="o">.</span><span class="n">as_sub_command</span><span class="p">(</span><span class="s2">&quot;echo&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">sub_command</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MessageContext</span><span class="p">,</span>
+    <span class="n">content</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">Greedy</span><span class="p">[</span><span class="n">tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">Str</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="o">...</span>
 </code></pre></div>
+<p>The above example takes advantage of message command groups to group
+sub-commands together. The group itself will be callable as
+<code>{prefix}uwu group</code> and the sub-command will be callable as
+<code>{prefix}uwu group echo {content...}</code>. <code>Greedy</code> marks this argument as
+taking the rest of the positional arguments and doesn't effect slash
+commands.</p>
 <h3 id="making-context-menus">Making context menus<a class="headerlink" href="#making-context-menus" title="Permanent link">#</a></h3>
 <p>Context menu commands are the simplest of the 3. These are the buttons you see
 when you right click on a user or message under "Apps". These have similar
@@ -715,12 +741,7 @@ restrictions and do not have descriptions nor options.</p>
 <p>There's message context menus which will always take
 <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/messages/#hikari.messages.Message">hikari.Message</a> positionally as their 2nd argument.</p>
 <h5 id="user-context-menus">User context menus<a class="headerlink" href="#user-context-menus" title="Permanent link">#</a></h5>
-<div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_user_menu</span><span class="p">(</span><span class="s2">&quot;Yeet user&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">user_menu</span><span class="p">(</span>
-    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MenuContext</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">InteractionMember</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="c1"># ... Yetting logic</span>
-    <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2"> got yeeted!&quot;</span><span class="p">,</span> <span class="n">delete_after</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code>
 </code></pre></div>
 <p><img alt="find_intents_1" src="../images/user_menu_example.png" /></p>
 <p>And there's user context menus which will always take
@@ -849,7 +870,7 @@ reload or unload target modules when it detects a that its file has been changed
 <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/#tanjun.HotReloader">tanjun.HotReloader</a> will also redeclare application commands when they're
 changed unless <code>redeclare_cmds_after=None</code> is passed to its init.</p>
 <p>Only one of these approaches should be used at the time since they'll conflict
-with eachother.</p>
+with each other.</p>
 <h5 id="see-you-space-cowboy">See You Space Cowboy<a class="headerlink" href="#see-you-space-cowboy" title="Permanent link">#</a></h5>
 <p>For more information on Tanjun's features (including features not covered here and
 other ways to declare commands) see its <a href="https://tanjun.cursed.solutions/usage/">usage guide</a>.</p>
