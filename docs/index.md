@@ -29,7 +29,7 @@ an internet connection which can reach Discord and maintain a persistent connect
 
 The example above shows how you'd initiate and the [standard gateway bot implementation][hikari.impl.bot.GatewayBot],
 it should be noted that the only required argument here is the token (first argument). The
-other arguments configure what entities this should cache in-process and the "intents" which
+other arguments configure what entities this should cache in-process and the [intents][] which
 indicate what events the bot wants to receive, more information on these can be found in [events][].
 
 ##### REST server bots
