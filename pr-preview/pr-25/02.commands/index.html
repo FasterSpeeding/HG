@@ -605,6 +605,8 @@
 
 
 <h1 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">#</a></h1>
+<p>Slash commands are the commands you'll see in Discord when you start by "/" in
+the message box.</p>
 <p>This guide is only going to cover using a command client to make commands as,
 while you can make commands without Hikari, command clients makes it a lot easier
 and is the recommended approach.</p>
@@ -613,8 +615,6 @@ Tanjun is a command framework which wraps around Hikari to provide ways declare
 and handle both modern application (slash) commands, traditional message
 (prefix) commands, and context menus.</p>
 <h3 id="making-slash-commands">Making Slash commands<a class="headerlink" href="#making-slash-commands" title="Permanent link">#</a></h3>
-<p>Slash commands are the commands you'll see in Discord when you start by "/" in
-the message box.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@tanchan</span><span class="o">.</span><span class="n">doc_parse</span><span class="o">.</span><span class="n">with_annotated_args</span>
 <span class="nd">@tanchan</span><span class="o">.</span><span class="n">doc_parse</span><span class="o">.</span><span class="n">as_slash_command</span><span class="p">(</span>
     <span class="n">default_to_ephemeral</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -650,8 +650,8 @@ the message box.</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully banned </span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="slash_command_example_1" src="../images/slash_command_example_1.png" width="49%" />
-<img alt="slash_command_example_2" src="../images/slash_command_example_2.png" width="49%" /></p>
+<p><img alt="first slash command example" src="../images/slash_command_example_1.png" width="49%" />
+<img alt="second slash command example" src="../images/slash_command_example_2.png" width="49%" /></p>
 <p>There's a few things going on in this example:</p>
 <p>First off, <a class="autorefs autorefs-external" href="https://tanchan.cursed.solutions/reference/doc_parse/#tanchan.doc_parse.as_slash_command">tanchan.doc_parse.as_slash_command</a> is used to create a slash command
 by wrapping a command callback. This is using the callback's name ("ban_user") as
@@ -685,7 +685,7 @@ to mark individual responses as ephemeral.</p>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;`group name` command.&quot;&quot;&quot;</span>
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;Called `group name` command&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="slash_command_group_example.png" src="../images/slash_command_group_example.png" /></p>
+<p><img alt="slash command group example" src="../images/slash_command_group_example.png" /></p>
 <p>Since normal slash commands can't have spaces in their names, you have to use
 slash command "groups" to get spaces. These are limited to only being nested
 once (so a slash command group can be put in a top-level group but can't then
@@ -756,7 +756,7 @@ restrictions and do not have descriptions nor options.</p>
 
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;Archived message&quot;</span><span class="p">,</span> <span class="n">delete_after</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="message_menu_example" src="../images/message_menu_example.png" /></p>
+<p><img alt="message menu example" src="../images/message_menu_example.png" /></p>
 <p>There's message context menus which will always take
 <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/messages/#hikari.messages.Message">hikari.Message</a> positionally as their 2nd argument.</p>
 <h5 id="user-context-menus">User context menus<a class="headerlink" href="#user-context-menus" title="Permanent link">#</a></h5>
@@ -767,7 +767,7 @@ restrictions and do not have descriptions nor options.</p>
     <span class="c1"># ... Yetting logic</span>
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2"> got yeeted!&quot;</span><span class="p">,</span> <span class="n">delete_after</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="user_menu_example" src="../images/user_menu_example.png" width="40%" /></p>
+<p><img alt="user menu example" src="../images/user_menu_example.png" width="40%" /></p>
 <p>And there's user context menus which will always take
 <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/interactions/base_interactions/#hikari.interactions.base_interactions.InteractionMember">hikari.InteractionMember</a>
 positionally as their 2nd argument.</p>
