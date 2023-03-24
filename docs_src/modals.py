@@ -30,9 +30,8 @@ async def modal_template(
     await ctx.respond(f"{name} is sussy because they {reason}")
 
 
-@tanjun.as_slash_command("name", "description")
 async def command(
-    ctx: tanjun.abc.SlashContext, client: alluka.Injected[modals.ModalClient]
+    ctx: tanjun.abc.AppCommandContext, client: alluka.Injected[modals.ModalClient]
 ) -> None:
     modal = modal_template()
     client.set_modal("custom_id", modal)
