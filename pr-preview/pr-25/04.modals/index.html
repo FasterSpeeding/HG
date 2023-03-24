@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../03.components/">
       
       
-        <link rel="next" href="../02.commands/">
+        <link rel="next" href="../09.serverless/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
     
     
       
-        <title>Events - A h'y Hikari guide</title>
+        <title>Modals - A h'y Hikari guide</title>
       
     
     
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#events" class="md-skip">
+        <a href="#modals" class="md-skip">
           Skip to content
         </a>
       
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Events
+              Modals
             
           </span>
         </div>
@@ -268,93 +268,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Events
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../01.events/" class="md-nav__link">
         Events
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#intents" class="md-nav__link">
-    Intents
-  </a>
-  
-    <nav class="md-nav" aria-label="Intents">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#privileged-intents" class="md-nav__link">
-    Privileged intents
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#client-lifetimes" class="md-nav__link">
-    Client lifetimes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wait-for-an-event" class="md-nav__link">
-    Wait for an event
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#event-streams" class="md-nav__link">
-    Event streams
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#event-handling-in-frameworks" class="md-nav__link">
-    Event handling in frameworks
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -395,11 +313,52 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../04.modals/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Modals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Modals
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#row-row-fight-the-power" class="md-nav__link">
+    Row! Row! Fight the power!
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -446,49 +405,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#intents" class="md-nav__link">
-    Intents
-  </a>
-  
-    <nav class="md-nav" aria-label="Intents">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#privileged-intents" class="md-nav__link">
-    Privileged intents
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#client-lifetimes" class="md-nav__link">
-    Client lifetimes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#wait-for-an-event" class="md-nav__link">
-    Wait for an event
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#event-streams" class="md-nav__link">
-    Event streams
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#event-handling-in-frameworks" class="md-nav__link">
-    Event handling in frameworks
+  <a href="#row-row-fight-the-power" class="md-nav__link">
+    Row! Row! Fight the power!
   </a>
   
 </li>
@@ -508,130 +426,56 @@
                   
 
 
-<h1 id="events">Events<a class="headerlink" href="#events" title="Permanent link">#</a></h1>
-<p>Events are the bread and butter of how bots know what's happening on Discord.
-They are received over the gateway bot's connection and let us detect anything from someone
-joining or leaving a guild to moderation action to people creating messages.</p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">(</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">)</span>
-
-<span class="nd">@bot</span><span class="o">.</span><span class="n">listen</span><span class="p">()</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">on_event</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">MessageCreateEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">event</span><span class="o">.</span><span class="n">is_human</span><span class="p">:</span>
-        <span class="k">return</span>  <span class="c1"># Ignore message creates from non-humans (so bots and webhooks).</span>
-
-    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">message</span> <span class="o">==</span> <span class="s2">&quot;Hello Botto&quot;</span><span class="p">:</span>
-        <span class="k">await</span> <span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;Good morning human-kyun&quot;</span><span class="p">)</span>
-</code></pre></div>
-<p>In this basic example we listen for message create events from actual users and send the response
-message <code>"Good morning human-kyun"</code> if the content matches `"Hello Botto".</p>
-<h3 id="intents">Intents<a class="headerlink" href="#intents" title="Permanent link">#</a></h3>
-<p>Remember "intents" which were mentioned briefly earlier, well these are important here as we have to
-make sure that the correct intents are enabled for the events we want the bot to listen for when
-creating <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot">hikari.GatewayBot</a>. More information on which intents are needed
-for an event can be found at <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/intents/#hikari.intents.Intents">hikari.Intents</a> and if an event isn't mentioned
-in this list then it is always enabled.</p>
-<h5 id="privileged-intents">Privileged intents<a class="headerlink" href="#privileged-intents" title="Permanent link">#</a></h5>
-<p>An important point to note is that the message create event that examples listens for is considered
-"privileged" by Discord meaning that you have to enable them in Discord's application settings before
-the bot can declare them.</p>
-<p><img alt="find_intents_1" src="../images/find_intents_1.png" width="40%" /></p>
-<p>First go to the "Bot" section of the application you want to enable these settings for.</p>
-<p><img alt="find_intents_2" src="../images/find_intents_2.png" width="80%" /></p>
-<p>Then scroll down until you reach "Privileged Gateway Intents" and enable the intents you need.
-The presence intent lets the bot monitor the statuses of guild members, the server member intent
-lets the bot track who is in a server, and the message content intent lets the bot see every message
-users send (without this the bot will only see the content of messages which mention it).</p>
-<h3 id="client-lifetimes">Client lifetimes<a class="headerlink" href="#client-lifetimes" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">(</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">)</span>
-<span class="n">db</span><span class="p">:</span> <span class="n">DatabaseProto</span>
-
-<span class="nd">@bot</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="n">hikari</span><span class="o">.</span><span class="n">StartingEvent</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">on_starting_event</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">StartingEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>  <span class="c1"># Start our database client while Hikari is starting.</span>
-
-<span class="k">async</span> <span class="k">def</span> <span class="nf">on_stopping_event</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">StoppedEvent</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">await</span> <span class="n">db</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>  <span class="c1"># Stop our database client when Hikari is stopping..</span>
-
-<span class="n">bot</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">hikari</span><span class="o">.</span><span class="n">StoppedEvent</span><span class="p">,</span> <span class="n">on_stopping_event</span><span class="p">)</span>
-</code></pre></div>
-<p>Hikari provides 4 event types which can be used for managing state around the client's lifetime:</p>
-<ul>
-<li><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/events/lifetime_events/#hikari.events.lifetime_events.StartingEvent">hikari.StartingEvent</a>: called when the bot's starting</li>
-<li><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/events/lifetime_events/#hikari.events.lifetime_events.StartedEvent">hikari.StartedEvent</a>: called when the bot's finished starting</li>
-<li><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/events/lifetime_events/#hikari.events.lifetime_events.StoppingEvent">hikari.StoppingEvent</a>: called when the bot's started closing</li>
-<li><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/events/lifetime_events/#hikari.events.lifetime_events.StoppedEvent">hikari.StoppedEvent</a>: called when the bot's finished closing</li>
-</ul>
-<p>It should be noted that Tanjun provides its own lifetime management system on-top which isn't tied
-to the bot type you're using. More information on this can be found in Tanjun's guide
-<a href="https://tanjun.cursed.solutions/usage/#client-lifetime-management">here</a>.</p>
-<h3 id="wait-for-an-event">Wait for an event<a class="headerlink" href="#wait-for-an-event" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">handle_edit</span><span class="p">(</span><span class="n">bot</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">,</span> <span class="n">message</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">Message</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">edit_event</span> <span class="o">=</span> <span class="k">await</span> <span class="n">bot</span><span class="o">.</span><span class="n">wait_for</span><span class="p">(</span>
-            <span class="n">hikari</span><span class="o">.</span><span class="n">MessageUpdateEvent</span><span class="p">,</span>
-            <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
-            <span class="n">predicate</span><span class="o">=</span><span class="k">lambda</span> <span class="n">event</span><span class="p">:</span> <span class="n">event</span><span class="o">.</span><span class="n">message_id</span> <span class="o">==</span> <span class="n">message</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
-        <span class="p">)</span>
-
-    <span class="k">except</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">TimeoutError</span><span class="p">:</span>
-        <span class="c1"># In this example we try to delete the message if it&#39;s not edited by</span>
-        <span class="c1"># author within 60 seconds.</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">await</span> <span class="n">message</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
-
-        <span class="c1"># ForbiddenError will be raised if the bot can no-longer access the channel.</span>
-        <span class="c1"># and NotFoundError will be raised if the message doesn&#39;t exist anymore.</span>
-        <span class="c1"># We ignore these expected cases and return early to guard against the</span>
-        <span class="c1"># edit handling logic being called.</span>
-        <span class="k">except</span> <span class="p">(</span><span class="n">hikari</span><span class="o">.</span><span class="n">ForbiddenError</span><span class="p">,</span> <span class="n">hikari</span><span class="o">.</span><span class="n">NotFoundError</span><span class="p">):</span>
-            <span class="k">return</span>
-
-    <span class="c1"># ... Handle edit.</span>
-</code></pre></div>
-<p><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot.wait_for">GatewayBot.wait_for</a> can be used to wait for the next
-received event which matches a type and predicate (filter). In the above example we wait
-60 seconds for a message update event where <code>event.message_id</code> matches a specific message
-and process the next edit or delete the message if we don't get a response in time.</p>
-<h3 id="event-streams">Event streams<a class="headerlink" href="#event-streams" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">stream_follow_ups</span><span class="p">(</span>
-    <span class="n">bot</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">,</span> <span class="n">channel</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">PartialChannel</span>
+<h1 id="modals">Modals<a class="headerlink" href="#modals" title="Permanent link">#</a></h1>
+<p>This guide is only going to cover using <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s Modal client to make
+commands as, while you can make and handle modals without Hikari, higher level
+clients make it a lot easier and is the recommended approach.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@modals</span><span class="o">.</span><span class="n">as_modal_template</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">modal_template</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">modals</span><span class="o">.</span><span class="n">ModalContext</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">modals</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;What is their name?&quot;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span>
+    <span class="p">),</span>
+    <span class="n">reason</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">modals</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span>
+        <span class="s2">&quot;reason&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Still likes harry potter.&quot;</span><span class="p">,</span>
+        <span class="n">style</span><span class="o">=</span><span class="n">hikari</span><span class="o">.</span><span class="n">TextInputStyle</span><span class="o">.</span><span class="n">PARAGRAPH</span><span class="p">,</span>
+    <span class="p">),</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-    <span class="n">iterator</span> <span class="o">=</span> <span class="n">bot</span><span class="o">.</span><span class="n">stream</span><span class="p">(</span><span class="n">hikari</span><span class="o">.</span><span class="n">MessageCreateEvent</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span>
-        <span class="p">(</span><span class="s2">&quot;event.channel_id&quot;</span><span class="p">,</span> <span class="n">channel</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is sussy because they </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Modals allow bots to prompt users for more information as the initial response
+for a slash command, context menu or message component interaction.</p>
+<p>These take the shape of dialogue boxes with the above example showing up in
+the client like this:</p>
+<p><img alt="modal_example" src="../images/modal_example.png" /></p>
+<p>The only supported field type for modals is "text inputs" right now. A modal
+can have up to 5 text inputs in it, each taking up to 4000 characters.
+The bot will not be told if a modal pop up was cancelled or closed without
+submission.</p>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">command</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">SlashContext</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">alluka</span><span class="o">.</span><span class="n">Injected</span><span class="p">[</span><span class="n">modals</span><span class="o">.</span><span class="n">ModalClient</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">modal</span> <span class="o">=</span> <span class="n">modal_template</span><span class="p">()</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">set_modal</span><span class="p">(</span><span class="s2">&quot;custom_id&quot;</span><span class="p">,</span> <span class="n">modal</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">create_modal_response</span><span class="p">(</span>
+        <span class="s2">&quot;Who&#39;s sussy?&quot;</span><span class="p">,</span> <span class="s2">&quot;custom_id&quot;</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="n">modal</span><span class="o">.</span><span class="n">rows</span>
     <span class="p">)</span>
-
-    <span class="k">with</span> <span class="n">iterator</span><span class="p">:</span>
-        <span class="k">async</span> <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">iterator</span><span class="p">:</span>
-            <span class="o">...</span>  <span class="c1"># ... process message create</span>
 </code></pre></div>
-<p><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot.stream">GatewayBot.stream</a> provides an asynchronous iterator which
-you can use to iterate over events as they're received. This comes with several chainable methods
-such as the filter method (more information on which can be found on
-<a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/iterators/#hikari.iterators.LazyIterator">LazyIterator</a>) and will cache events received between iterations.
-The <code>limit</code> keyword argument can be used to limit how many events are cached and, while <code>timeout</code>
-defaults to <a class="autorefs autorefs-external" href="https://docs.python.org/3.9/library/constants.html#None">None</a> (unlimited) for this, you likely want use <code>timeout</code> to specify how many
-seconds it should wait between events before ending iteration.</p>
-<h3 id="event-handling-in-frameworks">Event handling in frameworks<a class="headerlink" href="#event-handling-in-frameworks" title="Permanent link">#</a></h3>
-<p>Just a final note, frameworks which build on top of Hikari will have their own abstractions and
-approaches of handling listening to events.</p>
-<div class="highlight"><pre><span></span><code><span class="n">component</span> <span class="o">=</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">Component</span><span class="p">()</span>
-
-<span class="nd">@component</span><span class="o">.</span><span class="n">with_listener</span><span class="p">()</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">on_member_event</span><span class="p">(</span>
-    <span class="n">event</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">MemberCreateEvent</span> <span class="o">|</span> <span class="n">hikari</span><span class="o">.</span><span class="n">MemberUpdateEvent</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="o">...</span>
-
-<span class="nd">@component</span><span class="o">.</span><span class="n">with_listener</span><span class="p">(</span><span class="n">hikari</span><span class="o">.</span><span class="n">StartedEvent</span><span class="p">,</span> <span class="n">hikari</span><span class="o">.</span><span class="n">StartingEvent</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">on_event</span><span class="p">(</span><span class="n">event</span><span class="p">:</span> <span class="n">hikari</span><span class="o">.</span><span class="n">Event</span><span class="p">):</span>
-    <span class="o">...</span>
-</code></pre></div>
-<p>Tanjun (while minimally invasive) tracks event listeners primarily through its "Components"
-using the decorator method <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.Component.with_listener">Component.with_listener</a>
-and the method <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.Component.add_listener">Component.add_listener</a> which add dependency
-injection support to event dispatch and register the relevant event listeners when the Tanjun
-client is started; <code>with_listener</code> adds support for unions when parsing event types from the
-callback's signature but otherwise matches <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot.listen">GatewayBot.listen</a>.</p>
+<p>As shown above, creating a modal in respones to a slash command, context menu,
+or message component use is simple. First you register this modal instance to a
+top-level custom ID by calling
+<a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.ModalClient.set_modal">ModalClient.set_modal</a> (which defaults to 1
+use and a 10 second timeout). Then you can pass
+<a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.Modal.rows">Modal.rows</a> to <code>create_modal_response</code> as <code>components</code>
+alongside the top-level custom ID and the model's title.
+The used Modal custom ID must be unique and passing a constant value for
+<code>timeout</code> (e.g. <a class="autorefs autorefs-external" href="https://docs.python.org/3.9/library/constants.html#None">None</a> or a custom instance of [yuyo.timeouts.BasicTimeout])
+allows you to reuse a registered modal or to relax or enhance the timeout time.</p>
+<h3 id="row-row-fight-the-power">Row! Row! Fight the power!<a class="headerlink" href="#row-row-fight-the-power" title="Permanent link">#</a></h3>
+<p>This guide only covers one of <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s approaches for declaring modals
+and only gives a basic overview. For more information on Yuyo's modals
+functionality see its <a href="https://yuyo.cursed.solutions/usage/modals">usage guide</a>.</p>
 
 
 

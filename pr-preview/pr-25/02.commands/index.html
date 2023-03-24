@@ -12,7 +12,7 @@
         <link rel="prev" href="../01.events/">
       
       
-        <link rel="next" href="../09.serverless/">
+        <link rel="next" href="../03.components/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
@@ -430,6 +430,36 @@
   
   
     <li class="md-nav__item">
+      <a href="../03.components/" class="md-nav__link">
+        Message Components
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04.modals/" class="md-nav__link">
+        Modals
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../09.serverless/" class="md-nav__link">
         Serverless
       </a>
@@ -575,8 +605,9 @@
 
 
 <h1 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">#</a></h1>
-<p>While you can make commands without Hikari, this guide is only going to cover
-using a command client to make them as they make it a lot easier.</p>
+<p>This guide is only going to cover using a command client to make commands as,
+while you can make commands without Hikari, command clients makes it a lot easier
+and is the recommended approach.</p>
 <p>These examples will be using <a href="https://github.com/FasterSpeeding/Tanjun">Tanjun</a>.
 Tanjun is a command framework which wraps around Hikari to provide ways declare
 and handle both modern application (slash) commands, traditional message
@@ -619,8 +650,8 @@ the message box.</p>
     <span class="k">else</span><span class="p">:</span>
         <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Successfully banned </span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="find_intents_1" src="../images/slash_command_example_1.png" width="49%" />
-<img alt="find_intents_2" src="../images/slash_command_example_2.png" width="49%" /></p>
+<p><img alt="slash_command_example_1" src="../images/slash_command_example_1.png" width="49%" />
+<img alt="slash_command_example_2" src="../images/slash_command_example_2.png" width="49%" /></p>
 <p>There's a few things going on in this example:</p>
 <p>First off, <a class="autorefs autorefs-external" href="https://tanchan.cursed.solutions/reference/doc_parse/#tanchan.doc_parse.as_slash_command">tanchan.doc_parse.as_slash_command</a> is used to create a slash command
 by wrapping a command callback. This is using the callback's name ("ban_user") as
@@ -725,7 +756,7 @@ restrictions and do not have descriptions nor options.</p>
 
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;Archived message&quot;</span><span class="p">,</span> <span class="n">delete_after</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="find_intents_1" src="../images/message_menu_example.png" /></p>
+<p><img alt="message_menu_example" src="../images/message_menu_example.png" /></p>
 <p>There's message context menus which will always take
 <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/messages/#hikari.messages.Message">hikari.Message</a> positionally as their 2nd argument.</p>
 <h5 id="user-context-menus">User context menus<a class="headerlink" href="#user-context-menus" title="Permanent link">#</a></h5>
@@ -736,7 +767,7 @@ restrictions and do not have descriptions nor options.</p>
     <span class="c1"># ... Yetting logic</span>
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2"> got yeeted!&quot;</span><span class="p">,</span> <span class="n">delete_after</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="find_intents_1" src="../images/user_menu_example.png" /></p>
+<p><img alt="user_menu_example" src="../images/user_menu_example.png" width="40%" /></p>
 <p>And there's user context menus which will always take
 <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/interactions/base_interactions/#hikari.interactions.base_interactions.InteractionMember">hikari.InteractionMember</a>
 positionally as their 2nd argument.</p>
