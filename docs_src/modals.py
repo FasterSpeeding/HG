@@ -8,3 +8,34 @@
 #
 # You should have received a copy of the CC0 Public Domain Dedication along with this software.
 # If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
+
+import alluka
+import hikari
+import tanjun
+from yuyo import modals
+
+
+@modals.as_modal_template
+async def modal_template(
+    ctx: modals.ModalContext,
+    name: str = modals.text_input(
+        "name", placeholder="What is their name?", max_length=20
+    ),
+    reason: str = modals.text_input(
+        "reason",
+        default="Still likes harry potter.",
+        style=hikari.TextInputStyle.PARAGRAPH,
+    ),
+) -> None:
+    await ctx.respond(f"{name} is sussy because they {reason}")
+
+
+@tanjun.as_slash_command("name", "description")
+async def command(
+    ctx: tanjun.abc.SlashContext, client: alluka.Injected[modals.ModalClient]
+) -> None:
+    modal = modal_template()
+    client.set_modal("custom_id", modal)
+    await ctx.create_modal_response(
+        "Who's sussy?", "custom_id", components=modal.rows
+    )
