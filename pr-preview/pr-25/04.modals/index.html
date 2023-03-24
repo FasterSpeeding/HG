@@ -462,16 +462,14 @@ submission.</p>
         <span class="s2">&quot;Who&#39;s sussy?&quot;</span><span class="p">,</span> <span class="s2">&quot;custom_id&quot;</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="n">modal</span><span class="o">.</span><span class="n">rows</span>
     <span class="p">)</span>
 </code></pre></div>
-<p>As shown above, creating a modal in respones to a slash command, context menu,
+<p>As shown above, creating a modal in response to a slash command, context menu,
 or message component use is simple. First you register this modal instance to a
 top-level custom ID by calling
 <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.ModalClient.set_modal">ModalClient.set_modal</a> (which defaults to 1
 use and a 10 second timeout). Then you can pass
 <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.Modal.rows">Modal.rows</a> to <code>create_modal_response</code> as <code>components</code>
-alongside the top-level custom ID and the model's title.
-The used Modal custom ID must be unique and passing a constant value for
-<code>timeout</code> (e.g. <a class="autorefs autorefs-external" href="https://docs.python.org/3.9/library/constants.html#None">None</a> or a custom instance of [yuyo.timeouts.BasicTimeout])
-allows you to reuse a registered modal or to relax or enhance the timeout time.</p>
+alongside the top-level custom ID and the model's title. A modal can only be
+triggered as the first response (before deferring).</p>
 <h3 id="row-row-fight-the-power">Row! Row! Fight the power!<a class="headerlink" href="#row-row-fight-the-power" title="Permanent link">#</a></h3>
 <p>This guide only covers one of <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s approaches for declaring modals
 and only gives a basic overview. For more information on Yuyo's modals
