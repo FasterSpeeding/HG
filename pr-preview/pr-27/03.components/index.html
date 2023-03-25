@@ -537,9 +537,9 @@ action rows, you still need to be aware of the restrictions around them:</p>
 <li>A row can contain up to 5 buttons (regardless of the style).</li>
 </ul>
 <p><a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ActionColumnExecutor">ActionColumnExecutor</a> will always append
-components to the last row if possible or add a new row. this means that if your
+components to the last row if possible or add a new row. This means that if your
 second row only has 1 button but there's a 3rd which is a select menu then an
-add button call would add a 4th row for the button.</p>
+add button call would add a 4th row for the new button.</p>
 <h3 id="sending-components">Sending components<a class="headerlink" href="#sending-components" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_slash_command</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">command</span><span class="p">(</span>
