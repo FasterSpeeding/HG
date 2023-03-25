@@ -23,7 +23,7 @@ def hikari_listener():
         if not event.is_human:
             return  # Ignore message creates from non-humans (so bots and webhooks).
 
-        if event.message == "Hello Botto":
+        if event.message.content == "Hello Botto":
             await event.message.respond("Good morning human-kyun")
 
 
