@@ -541,7 +541,7 @@ add button call would add a 4th row for the button.</p>
 <h3 id="sending-components">Sending components<a class="headerlink" href="#sending-components" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_slash_command</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">command</span><span class="p">(</span>
-    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">alluka</span><span class="o">.</span><span class="n">Injected</span><span class="p">[</span><span class="n">components</span><span class="o">.</span><span class="n">ComponentClient</span><span class="p">]</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">alluka</span><span class="o">.</span><span class="n">Injected</span><span class="p">[</span><span class="n">components</span><span class="o">.</span><span class="n">Client</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">component</span> <span class="o">=</span> <span class="n">SelectColumn</span><span class="p">()</span>
     <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span>
@@ -549,6 +549,12 @@ add button call would add a 4th row for the button.</p>
     <span class="p">)</span>
     <span class="n">client</span><span class="o">.</span><span class="n">set_executor</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">component</span><span class="p">)</span>
 </code></pre></div>
+<p>As shown above, sending the components in an action column is easy. First you
+pass <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ActionColumnExecutor.rows">ActionColumnExecutor.rows</a> as
+<code>components=executor.rows</code> to the create message method, then you call
+<a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ComponentClient.set_executor">ComponentClient.set_executor</a>
+with the created message and registered executor to make it listen for
+interactions.</p>
 <h3 id="and-now-for-something-completely-different">And now for something completely different<a class="headerlink" href="#and-now-for-something-completely-different" title="Permanent link">#</a></h3>
 <p>This guide only covers one of <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s different approaches for declaring
 and handling components, only giving a basic overview. For more information on
