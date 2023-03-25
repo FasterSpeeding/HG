@@ -9,15 +9,17 @@
       
       
       
-        <link rel="prev" href="../04.modals/">
+        <link rel="prev" href="../02.commands/">
       
+      
+        <link rel="next" href="../04.modals/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
     
     
       
-        <title>Serverless - A h'y Hikari guide</title>
+        <title>Message Components - A h'y Hikari guide</title>
       
     
     
@@ -112,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#serverless" class="md-skip">
+        <a href="#message-components" class="md-skip">
           Skip to content
         </a>
       
@@ -147,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Serverless
+              Message Components
             
           </span>
         </div>
@@ -296,11 +298,73 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../03.components/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Message Components
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Message Components
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#making-components" class="md-nav__link">
+    Making components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rows" class="md-nav__link">
+    Rows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sending-components" class="md-nav__link">
+    Sending components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#and-now-for-something-completely-different" class="md-nav__link">
+    And now for something completely different
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -326,52 +390,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Serverless
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../09.serverless/" class="md-nav__link">
         Serverless
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#asgi" class="md-nav__link">
-    ASGI
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -403,8 +426,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#asgi" class="md-nav__link">
-    ASGI
+  <a href="#making-components" class="md-nav__link">
+    Making components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rows" class="md-nav__link">
+    Rows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sending-components" class="md-nav__link">
+    Sending components
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#and-now-for-something-completely-different" class="md-nav__link">
+    And now for something completely different
   </a>
   
 </li>
@@ -424,30 +468,98 @@
                   
 
 
-<h1 id="serverless">Serverless<a class="headerlink" href="#serverless" title="Permanent link">#</a></h1>
-<h3 id="asgi">ASGI<a class="headerlink" href="#asgi" title="Permanent link">#</a></h3>
-<p>While Hikari's standard RESTBot implementation works by running an AIOHTTP server, this isn't the only way you can listen to interactions as a REST server.</p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">)</span>
-<span class="n">tanjun</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">from_rest_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">bot_managed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<h1 id="message-components">Message Components<a class="headerlink" href="#message-components" title="Permanent link">#</a></h1>
+<p>Message components are the interactive buttons and select menus you'll see on
+messages sent by bots.</p>
+<p>This guide is only going to cover using <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s components client to make
+and handle components as, while you can use components with just Hikari, higher
+level clients make it a lot easier and is the recommended approach.</p>
+<h3 id="making-components">Making components<a class="headerlink" href="#making-components" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">LinkColumn</span><span class="p">(</span><span class="n">components</span><span class="o">.</span><span class="n">ActionColumnExecutor</span><span class="p">):</span>
+    <span class="nd">@components</span><span class="o">.</span><span class="n">as_button</span><span class="p">(</span><span class="n">hikari</span><span class="o">.</span><span class="n">ButtonStyle</span><span class="o">.</span><span class="n">DANGER</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_button</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">components</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;Button pressed&quot;</span><span class="p">)</span>
 
-<span class="c1"># ... Other bot setup.</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">fastapi</span><span class="o">.</span><span class="n">FastAPI</span><span class="p">()</span>
-
-<span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;/bot&quot;</span><span class="p">,</span> <span class="n">bot</span><span class="p">)</span>
+    <span class="n">link_button</span> <span class="o">=</span> <span class="n">components</span><span class="o">.</span><span class="n">link_button</span><span class="p">(</span><span class="s2">&quot;htts://example.com/yee&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>The utility library <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a> provides an <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/asgi/#yuyo.asgi.AsgiBot">ASGI implementation of RESTBot</a> which allows for running an interaction server with any ASGI v3 compatible REST server. The above examples shows this being used as
-a sub-app in a FastAPI server but <code>ASGIBot</code> can otherwise be used as the "app" when running using an ASGI web server
-implementation like Uvicorn or Gunicorn.</p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">)</span>
+<p>The above examples shows using <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ActionColumnExecutor">yuyo.components.ActionColumnExecutor</a> to
+declare and handle message buttons.</p>
+<p><img alt="button colours" src="../images/button_colours.png" /></p>
+<p>There are several different "styles" of buttons, as shown above. Most button
+styles are interactive (meaning that the bot will be told when they're pressed)
+except link buttons, which opens the relevant link in a browser for the user
+who clicked it.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">SelectColumn</span><span class="p">(</span><span class="n">components</span><span class="o">.</span><span class="n">ActionColumnExecutor</span><span class="p">):</span>
+    <span class="nd">@components</span><span class="o">.</span><span class="n">as_channel_select</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_channel_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">components</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">select_channels</span><span class="p">)</span><span class="si">}</span><span class="s2"> channels&quot;</span><span class="p">)</span>
 
-<span class="c1"># ... Setup bot</span>
+    <span class="nd">@components</span><span class="o">.</span><span class="n">with_option</span><span class="p">(</span><span class="s2">&quot;borf&quot;</span><span class="p">,</span> <span class="s2">&quot;dog&quot;</span><span class="p">)</span>
+    <span class="nd">@components</span><span class="o">.</span><span class="n">with_option</span><span class="p">(</span><span class="s2">&quot;meow&quot;</span><span class="p">,</span> <span class="s2">&quot;cat&quot;</span><span class="p">)</span>
+    <span class="nd">@components</span><span class="o">.</span><span class="n">with_option</span><span class="p">(</span><span class="s2">&quot;label&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)</span>
+    <span class="nd">@components</span><span class="o">.</span><span class="n">as_text_select</span><span class="p">(</span><span class="n">min_values</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_values</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_text_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">components</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;Animals: &quot;</span> <span class="o">+</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">select_texts</span><span class="p">))</span>
 
-<span class="n">entry_point</span> <span class="o">=</span> <span class="n">agraffe</span><span class="o">.</span><span class="n">Agraffe</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
+    <span class="nd">@components</span><span class="o">.</span><span class="n">as_select_menu</span><span class="p">(</span><span class="n">hikari</span><span class="o">.</span><span class="n">ComponentType</span><span class="o">.</span><span class="n">ROLE_SELECT_MENU</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_role_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">components</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">roles</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">role</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">role</span> <span class="ow">in</span> <span class="n">ctx</span><span class="o">.</span><span class="n">select_roles</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected roles: </span><span class="si">{</span><span class="n">roles</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nd">@components</span><span class="o">.</span><span class="n">as_select_menu</span><span class="p">(</span><span class="n">hikari</span><span class="o">.</span><span class="n">ComponentType</span><span class="o">.</span><span class="n">USER_SELECT_MENU</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_user_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">components</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">users</span> <span class="o">=</span> <span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">select_users</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected users: </span><span class="si">{</span><span class="n">users</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="nd">@components</span><span class="o">.</span><span class="n">as_select_menu</span><span class="p">(</span><span class="n">hikari</span><span class="o">.</span><span class="n">ComponentType</span><span class="o">.</span><span class="n">MENTIONABLE_SELECT_MENU</span><span class="p">)</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">on_mentionable_select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">components</span><span class="o">.</span><span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">role_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">select_roles</span><span class="p">)</span>
+        <span class="n">user_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">select_users</span><span class="p">)</span>
+        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected </span><span class="si">{</span><span class="n">user_count</span><span class="si">}</span><span class="s2"> users and </span><span class="si">{</span><span class="n">role_count</span><span class="si">}</span><span class="s2"> roles&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>Thanks to the flexibility of the ASGI standard, this can also be used with serverless frameworks people have
-implemented ASGI adapters for. The above example uses <a href="https://pypi.org/project/agraffe/">agraffe</a> to create
-an entry point for AWS Lambdas, Azure Functions, or Google Cloud Functions.</p>
+<p><img alt="select menu example" src="../images/select_menu_example.png" /></p>
+<p>Message components also include select menus. These allow users to select 1 or
+more options (dependent on the configured <code>min_values</code> and <code>max_values</code>),
+telling the bot which options they've picked. Most select menu types will
+pre-populate options for users (whether that be users, channels, or roles), but
+text select menus require the bot to pre-define up to 25 string options for it.</p>
+<p>By default <code>min_values</code> is set to <code>0</code> and <code>max_values</code> is set to <code>1</code>, but
+<code>max_values</code> can be set to up to <code>25</code> to allow the user to select multiple
+options before finalising (sending) the interaction.</p>
+<h3 id="rows">Rows<a class="headerlink" href="#rows" title="Permanent link">#</a></h3>
+<p>While <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ActionColumnExecutor">ActionColumnExecutor</a> abstracts away building individual,
+action rows you still need to be aware of the restrictions around them:</p>
+<ul>
+<li>A message can have up to 5 rows.</li>
+<li>A row can only contain one select menu.</li>
+<li>A row can contain up to 5 buttons (regardless of the style).</li>
+</ul>
+<p><a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ActionColumnExecutor">ActionColumnExecutor</a> will always append
+components to the last row if possible or add a new row. this means that if your
+second row only has 1 button but there's a 3rd which is a select menu then an
+add button call would add a 4th row for the button.</p>
+<h3 id="sending-components">Sending components<a class="headerlink" href="#sending-components" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_slash_command</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">command</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">alluka</span><span class="o">.</span><span class="n">Injected</span><span class="p">[</span><span class="n">components</span><span class="o">.</span><span class="n">Client</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">component</span> <span class="o">=</span> <span class="n">SelectColumn</span><span class="p">()</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span>
+        <span class="s2">&quot;hello!&quot;</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="n">component</span><span class="o">.</span><span class="n">rows</span><span class="p">,</span> <span class="n">ensure_result</span><span class="o">=</span><span class="kc">True</span>
+    <span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">set_executor</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="n">component</span><span class="p">)</span>
+</code></pre></div>
+<p>As shown above, sending the components in an action column is easy. First you
+pass <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ActionColumnExecutor.rows">ActionColumnExecutor.rows</a> as
+<code>components=executor.rows</code> to the create message method, then you call
+<a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ComponentClient.set_executor">ComponentClient.set_executor</a>
+with the created message and registered executor to make it listen for
+interactions.</p>
+<h3 id="and-now-for-something-completely-different">And now for something completely different<a class="headerlink" href="#and-now-for-something-completely-different" title="Permanent link">#</a></h3>
+<p>This guide only covers one of <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s different approaches for declaring
+and handling components, only giving a basic overview. For more information on
+Yuyo's components functionality see its
+<a href="https://yuyo.cursed.solutions/usage/components">usage guide</a>.</p>
 
 
 

@@ -9,15 +9,17 @@
       
       
       
-        <link rel="prev" href="../04.modals/">
+        <link rel="prev" href="../03.components/">
       
+      
+        <link rel="next" href="../09.serverless/">
       
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
     
     
       
-        <title>Serverless - A h'y Hikari guide</title>
+        <title>Modals - A h'y Hikari guide</title>
       
     
     
@@ -112,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#serverless" class="md-skip">
+        <a href="#modals" class="md-skip">
           Skip to content
         </a>
       
@@ -147,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Serverless
+              Modals
             
           </span>
         </div>
@@ -311,21 +313,6 @@
 
   
   
-  
-    <li class="md-nav__item">
-      <a href="../04.modals/" class="md-nav__link">
-        Modals
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
     
   
   
@@ -338,12 +325,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          Serverless
+          Modals
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
-        Serverless
+        Modals
       </a>
       
         
@@ -362,8 +349,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#asgi" class="md-nav__link">
-    ASGI
+  <a href="#making-modals" class="md-nav__link">
+    Making modals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rows" class="md-nav__link">
+    Rows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sending-a-modal" class="md-nav__link">
+    Sending a modal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#row-row-fight-the-power" class="md-nav__link">
+    Row! Row! Fight the power!
   </a>
   
 </li>
@@ -372,6 +380,21 @@
   
 </nav>
       
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09.serverless/" class="md-nav__link">
+        Serverless
+      </a>
     </li>
   
 
@@ -403,8 +426,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#asgi" class="md-nav__link">
-    ASGI
+  <a href="#making-modals" class="md-nav__link">
+    Making modals
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rows" class="md-nav__link">
+    Rows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sending-a-modal" class="md-nav__link">
+    Sending a modal
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#row-row-fight-the-power" class="md-nav__link">
+    Row! Row! Fight the power!
   </a>
   
 </li>
@@ -424,30 +468,60 @@
                   
 
 
-<h1 id="serverless">Serverless<a class="headerlink" href="#serverless" title="Permanent link">#</a></h1>
-<h3 id="asgi">ASGI<a class="headerlink" href="#asgi" title="Permanent link">#</a></h3>
-<p>While Hikari's standard RESTBot implementation works by running an AIOHTTP server, this isn't the only way you can listen to interactions as a REST server.</p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">)</span>
-<span class="n">tanjun</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">from_rest_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">bot_managed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-<span class="c1"># ... Other bot setup.</span>
-
-<span class="n">app</span> <span class="o">=</span> <span class="n">fastapi</span><span class="o">.</span><span class="n">FastAPI</span><span class="p">()</span>
-
-<span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;/bot&quot;</span><span class="p">,</span> <span class="n">bot</span><span class="p">)</span>
+<h1 id="modals">Modals<a class="headerlink" href="#modals" title="Permanent link">#</a></h1>
+<p>Modals allow bots to prompt users for more information as the initial response
+for a slash command, context menu or message component interaction.</p>
+<p>This guide is only going to cover using <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s Modal client to make and
+handle modals as, while you can use modals with just Hikari, higher level
+clients make it a lot easier and is the recommended approach.</p>
+<h3 id="making-modals">Making modals<a class="headerlink" href="#making-modals" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="nd">@modals</span><span class="o">.</span><span class="n">as_modal_template</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">modal_template</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">modals</span><span class="o">.</span><span class="n">ModalContext</span><span class="p">,</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">modals</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;What is their name?&quot;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span>
+    <span class="p">),</span>
+    <span class="n">reason</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">modals</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span>
+        <span class="s2">&quot;reason&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Still likes harry potter.&quot;</span><span class="p">,</span>
+        <span class="n">style</span><span class="o">=</span><span class="n">hikari</span><span class="o">.</span><span class="n">TextInputStyle</span><span class="o">.</span><span class="n">PARAGRAPH</span><span class="p">,</span>
+    <span class="p">),</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is sussy because they </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>The utility library <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a> provides an <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/asgi/#yuyo.asgi.AsgiBot">ASGI implementation of RESTBot</a> which allows for running an interaction server with any ASGI v3 compatible REST server. The above examples shows this being used as
-a sub-app in a FastAPI server but <code>ASGIBot</code> can otherwise be used as the "app" when running using an ASGI web server
-implementation like Uvicorn or Gunicorn.</p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">)</span>
-
-<span class="c1"># ... Setup bot</span>
-
-<span class="n">entry_point</span> <span class="o">=</span> <span class="n">agraffe</span><span class="o">.</span><span class="n">Agraffe</span><span class="p">(</span><span class="n">bot</span><span class="p">)</span>
+<p>Modals take the shape of dialogue boxes which show up on top of everything else
+with the above example showing up in the client like this:</p>
+<p><img alt="modal example" src="../images/modal_example.png" /></p>
+<p>The only supported field type for modals is "text inputs" right now. A modal
+can have up to 5 text inputs in it, each taking up to 4000 characters.
+The bot will not be told if a modal pop up was cancelled or closed without
+submission.</p>
+<h3 id="rows">Rows<a class="headerlink" href="#rows" title="Permanent link">#</a></h3>
+<p>Modals also have the concept of "rows" in a similar sense to message components
+and <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.Modal">Modal</a> also handles creating new rows for you.
+Right now text inputs always take up a whole row.</p>
+<h3 id="sending-a-modal">Sending a modal<a class="headerlink" href="#sending-a-modal" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">command</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">AppCommandContext</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">alluka</span><span class="o">.</span><span class="n">Injected</span><span class="p">[</span><span class="n">modals</span><span class="o">.</span><span class="n">Client</span><span class="p">]</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">modal</span> <span class="o">=</span> <span class="n">modal_template</span><span class="p">()</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">set_modal</span><span class="p">(</span><span class="s2">&quot;custom_id&quot;</span><span class="p">,</span> <span class="n">modal</span><span class="p">)</span>
+    <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">create_modal_response</span><span class="p">(</span>
+        <span class="s2">&quot;Who&#39;s sussy?&quot;</span><span class="p">,</span> <span class="s2">&quot;custom_id&quot;</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="n">modal</span><span class="o">.</span><span class="n">rows</span>
+    <span class="p">)</span>
 </code></pre></div>
-<p>Thanks to the flexibility of the ASGI standard, this can also be used with serverless frameworks people have
-implemented ASGI adapters for. The above example uses <a href="https://pypi.org/project/agraffe/">agraffe</a> to create
-an entry point for AWS Lambdas, Azure Functions, or Google Cloud Functions.</p>
+<p>As shown above, creating a modal in response to a slash command, context menu,
+or message component use is simple. First you register this modal instance to a
+top-level custom ID by calling
+<a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.ModalClient.set_modal">ModalClient.set_modal</a> (which defaults to 1
+use and a 2 minute timeout). Then you can pass
+<a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.Modal.rows">Modal.rows</a> to <code>create_modal_response</code> as <code>components</code>
+alongside the top-level custom ID and the model's title. A modal can only be
+triggered as the first response (before deferring).</p>
+<h3 id="row-row-fight-the-power">Row! Row! Fight the power!<a class="headerlink" href="#row-row-fight-the-power" title="Permanent link">#</a></h3>
+<p>This guide only covers one of <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s approaches for declaring modals
+and only gives a basic overview. For more information on Yuyo's modals
+functionality see its <a href="https://yuyo.cursed.solutions/usage/modals">usage guide</a>.</p>
 
 
 
