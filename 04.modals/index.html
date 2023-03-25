@@ -469,7 +469,7 @@
 
 
 <h1 id="modals">Modals<a class="headerlink" href="#modals" title="Permanent link">#</a></h1>
-<p>Modals allow bots to prompt users for more information as the initial response
+<p>Modals allow bots to prompt a user for more information as the initial response
 for a slash command, context menu or message component interaction.</p>
 <p>This guide is only going to cover using <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s Modal client to make and
 handle modals as, while you can use modals with just Hikari, higher level
@@ -490,9 +490,11 @@ clients make it a lot easier and is the recommended approach.</p>
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is sussy because they </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Modals take the shape of dialogue boxes which show up on top of everything else
-with the above example showing up in the client like this:</p>
+for the user who triggered the relevant interaction. The above example shows up
+in the client like this:</p>
 <p><img alt="modal example" src="../images/modal_example.png" /></p>
-<p>The only supported field type for modals is "text inputs" right now. A modal
+<p>The only supported field type for modals is "text inputs" right now. Text inputs
+(as the name suggests) let the user input text to send to the bot and a modal
 can have up to 5 text inputs in it, each taking up to 4000 characters.
 The bot will not be told if a modal pop up was cancelled or closed without
 submission.</p>
@@ -511,7 +513,7 @@ Right now text inputs always take up a whole row.</p>
     <span class="p">)</span>
 </code></pre></div>
 <p>As shown above, creating a modal in response to a slash command, context menu,
-or message component use is simple. First you register this modal instance to a
+or message component use is simple. First you register the modal instance to a
 top-level custom ID by calling
 <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.ModalClient.set_modal">ModalClient.set_modal</a> (which defaults to 1
 use and a 2 minute timeout). Then you can pass
