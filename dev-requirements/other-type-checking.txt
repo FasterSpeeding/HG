@@ -1,1 +1,1 @@
-git+https://github.com/FasterSpeeding/Yuyo.git@9e39a8df22b4f2b09aa009fd445d8f0e7bd5ccb4
+git+https://github.com/FasterSpeeding/Yuyo.git@5bc9cd11b6f50b0bc60102ffcc7b427da9b5efb5
