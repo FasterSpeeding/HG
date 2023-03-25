@@ -8,9 +8,12 @@
 #
 # You should have received a copy of the CC0 Public Domain Dedication along with this software.
 # If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
+import typing
+
 import hikari
 import tanchan
 import tanjun
+from tanjun import annotations
 
 
 def slash_command_example():
@@ -22,8 +25,8 @@ def slash_command_example():
     )
     async def ban_user(
         ctx: tanjun.abc.SlashContext,
-        user: tanjun.annotations.User,
-        reason: tanjun.annotations.Str | hikari.UndefinedType = hikari.UNDEFINED,
+        user: annotations.User,
+        reason: annotations.Str | hikari.UndefinedType = hikari.UNDEFINED,
     ) -> None:
         """Ban a user.
 
@@ -79,7 +82,7 @@ def message_command_group_example():
     @message_command_group.as_sub_command("echo")
     async def sub_command(
         ctx: tanjun.abc.MessageContext,
-        content: tanjun.annotations.Greedy[tanjun.annotations.Str],
+        content: typing.Annotated[annotations.Str, annotations.Greedy()],
     ) -> None:
         ...
 
@@ -117,9 +120,7 @@ def muti_command_example():
     @tanchan.doc_parse.as_slash_command()
     @tanjun.as_message_command("meow command")
     @tanjun.as_user_menu("meow command")
-    async def command(
-        ctx: tanjun.abc.Context, user: tanjun.annotations.User
-    ) -> None:
+    async def command(ctx: tanjun.abc.Context, user: annotations.User) -> None:
         """Do a thing to a user.
 
         Parameters
