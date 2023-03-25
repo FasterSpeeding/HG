@@ -592,8 +592,8 @@ the message box.</p>
 <span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">ban_user</span><span class="p">(</span>
     <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">SlashContext</span><span class="p">,</span>
-    <span class="n">user</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">User</span><span class="p">,</span>
-    <span class="n">reason</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">Str</span> <span class="o">|</span> <span class="n">hikari</span><span class="o">.</span><span class="n">UndefinedType</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">annotations</span><span class="o">.</span><span class="n">User</span><span class="p">,</span>
+    <span class="n">reason</span><span class="p">:</span> <span class="n">annotations</span><span class="o">.</span><span class="n">Str</span> <span class="o">|</span> <span class="n">hikari</span><span class="o">.</span><span class="n">UndefinedType</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Ban a user.</span>
 
@@ -692,7 +692,7 @@ by sending <code>{prefix}weebish true</code>.</p>
 <span class="nd">@message_command_group</span><span class="o">.</span><span class="n">as_sub_command</span><span class="p">(</span><span class="s2">&quot;echo&quot;</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">sub_command</span><span class="p">(</span>
     <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MessageContext</span><span class="p">,</span>
-    <span class="n">content</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">Greedy</span><span class="p">[</span><span class="n">tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">Str</span><span class="p">],</span>
+    <span class="n">content</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Annotated</span><span class="p">[</span><span class="n">annotations</span><span class="o">.</span><span class="n">Str</span><span class="p">,</span> <span class="n">annotations</span><span class="o">.</span><span class="n">Greedy</span><span class="p">()],</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="o">...</span>
 </code></pre></div>
@@ -747,9 +747,7 @@ seconds if it still exists.</p>
 <span class="nd">@tanchan</span><span class="o">.</span><span class="n">doc_parse</span><span class="o">.</span><span class="n">as_slash_command</span><span class="p">()</span>
 <span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_message_command</span><span class="p">(</span><span class="s2">&quot;meow command&quot;</span><span class="p">)</span>
 <span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_user_menu</span><span class="p">(</span><span class="s2">&quot;meow command&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">command</span><span class="p">(</span>
-    <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">annotations</span><span class="o">.</span><span class="n">User</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="k">async</span> <span class="k">def</span> <span class="nf">command</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">user</span><span class="p">:</span> <span class="n">annotations</span><span class="o">.</span><span class="n">User</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Do a thing to a user.</span>
 
 <span class="sd">    Parameters</span>
@@ -828,8 +826,7 @@ component from the module's top level automatically.</p>
 </code></pre></div>
 <p>Component loaders give an easy way to load functionality and commands into a
 tanjun client from a module.</p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">hikari</span><span class="o">.</span><span class="n">GatewayBot</span><span class="p">(</span><span class="s2">&quot;Token&quot;</span><span class="p">)</span>
-<span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="p">(</span>
     <span class="n">tanjun</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">from_gateway_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">declare_global_commands</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="o">.</span><span class="n">load_directory</span><span class="p">(</span><span class="s2">&quot;./components&quot;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s2">&quot;bot.components&quot;</span><span class="p">)</span>
     <span class="o">.</span><span class="n">load_modules</span><span class="p">(</span><span class="s2">&quot;bot.admin&quot;</span><span class="p">)</span>

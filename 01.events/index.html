@@ -489,7 +489,7 @@ joining or leaving a guild to moderation action to people creating messages.</p>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">event</span><span class="o">.</span><span class="n">is_human</span><span class="p">:</span>
         <span class="k">return</span>  <span class="c1"># Ignore message creates from non-humans (so bots and webhooks).</span>
 
-    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">message</span> <span class="o">==</span> <span class="s2">&quot;Hello Botto&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="o">==</span> <span class="s2">&quot;Hello Botto&quot;</span><span class="p">:</span>
         <span class="k">await</span> <span class="n">event</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="s2">&quot;Good morning human-kyun&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>In this basic example we listen for message create events from actual users and send the response
