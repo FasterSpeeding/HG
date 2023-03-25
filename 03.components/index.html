@@ -541,8 +541,7 @@ components to the last row if possible or add a new row. This means that if your
 second row only has 1 button but there's a 3rd which is a select menu then an
 add button call would add a 4th row for the new button.</p>
 <h3 id="sending-components">Sending components<a class="headerlink" href="#sending-components" title="Permanent link">#</a></h3>
-<div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_slash_command</span><span class="p">(</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">)</span>
-<span class="k">async</span> <span class="k">def</span> <span class="nf">command</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="k">async</span> <span class="k">def</span> <span class="nf">command</span><span class="p">(</span>
     <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">Context</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">alluka</span><span class="o">.</span><span class="n">Injected</span><span class="p">[</span><span class="n">components</span><span class="o">.</span><span class="n">Client</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">component</span> <span class="o">=</span> <span class="n">SelectColumn</span><span class="p">()</span>
