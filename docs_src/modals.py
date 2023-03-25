@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Tanjun Examples - A collection of examples for Tanjun.
+# Tanjun Examples - A collection of examples for a Hikari guide.
 # Written in 2023 by Lucina Lucina@lmbyrne.dev
 #
 # To the extent possible under law, the author(s) have dedicated all copyright
