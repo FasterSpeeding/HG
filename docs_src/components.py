@@ -52,7 +52,6 @@ class SelectColumn(components.ActionColumnExecutor):
         await ctx.respond(f"Selected {user_count} users and {role_count} roles")
 
 
-@tanjun.as_slash_command("name", "description")
 async def command(
     ctx: tanjun.abc.Context, client: alluka.Injected[components.Client]
 ) -> None:
