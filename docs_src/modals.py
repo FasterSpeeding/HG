@@ -31,7 +31,7 @@ async def modal_template(
 
 
 async def command(
-    ctx: tanjun.abc.AppCommandContext, client: alluka.Injected[modals.ModalClient]
+    ctx: tanjun.abc.AppCommandContext, client: alluka.Injected[modals.Client]
 ) -> None:
     modal = modal_template()
     client.set_modal("custom_id", modal)

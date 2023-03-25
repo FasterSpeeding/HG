@@ -54,7 +54,7 @@ class SelectColumn(components.ActionColumnExecutor):
 
 @tanjun.as_slash_command("name", "description")
 async def command(
-    ctx: tanjun.abc.Context, client: alluka.Injected[components.ComponentClient]
+    ctx: tanjun.abc.Context, client: alluka.Injected[components.Client]
 ) -> None:
     component = SelectColumn()
     message = await ctx.respond(
