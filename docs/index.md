@@ -4,8 +4,9 @@ Hikari is a powerful Python library which lets you program bots to do all sorts 
 
 Before using this guide to learn Hikari it's recommended that you make sure you
 understand basic concepts and how they work in Python such as
-[object-oriented](https://realpython.com/python3-object-oriented-programming/), and
-[asynchronous](https://realpython.com/async-io-python/) programming. This knowledge is
+[object-oriented](https://realpython.com/python3-object-oriented-programming/),
+[asynchronous](https://realpython.com/async-io-python/) programming, and
+[exceptions](https://realpython.com/python-exceptions/). This knowledge is
 really important for properly grasping libraries like Hikari.
 
 If that all seems like a bit much for you and you don't really have a firm grasp on
