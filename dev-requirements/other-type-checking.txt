@@ -1,2 +1,2 @@
 git+https://github.com/hikari-py/hikari.git@231432fb96bba418db93f4b174a41f7bb7471f38
-git+https://github.com/FasterSpeeding/Yuyo.git@80f098127d6bf4a705f25546c173e8df05927c48
+git+https://github.com/FasterSpeeding/Yuyo.git@c0f4598b6a1f2b4c2b332dd1c122edaf55af65ab
