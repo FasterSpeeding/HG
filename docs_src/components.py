@@ -59,4 +59,4 @@ async def command(
     message = await ctx.respond(
         "hello!", components=component.rows, ensure_result=True
     )
-    client.set_executor(message, component)
+    client.register_executor(component, message=message)
