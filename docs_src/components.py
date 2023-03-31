@@ -46,7 +46,7 @@ class SelectColumn(components.ActionColumnExecutor):
         await ctx.respond(f"Selected users: {users}")
 
     @components.as_select_menu(hikari.ComponentType.MENTIONABLE_SELECT_MENU)
-    async def on_mentionable_menuself, ctx: components.Context) -> None:
+    async def on_mentionable_menu(self, ctx: components.Context) -> None:
         role_count = len(ctx.select_roles)
         user_count = len(ctx.select_users)
         await ctx.respond(f"Selected {user_count} users and {role_count} roles")
