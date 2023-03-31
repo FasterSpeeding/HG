@@ -16,7 +16,7 @@ from yuyo import components
 
 
 class LinkColumn(components.ActionColumnExecutor):
-    @components.as_button(hikari.ButtonStyle.DANGER)
+    @components.as_interactive_button(hikari.ButtonStyle.DANGER)
     async def on_button(self, ctx: components.Context) -> None:
         await ctx.respond("Button pressed")
 
@@ -31,22 +31,22 @@ class SelectColumn(components.ActionColumnExecutor):
     @components.with_option("borf", "dog")
     @components.with_option("meow", "cat")
     @components.with_option("label", "value")
-    @components.as_text_select(min_values=0, max_values=3)
-    async def on_text_select(self, ctx: components.Context) -> None:
+    @components.as_text_menu(min_values=0, max_values=3)
+    async def on_text_menu(self, ctx: components.Context) -> None:
         await ctx.respond("Animals: " + ", ".join(ctx.select_texts))
 
     @components.as_select_menu(hikari.ComponentType.ROLE_SELECT_MENU)
-    async def on_role_select(self, ctx: components.Context) -> None:
+    async def on_role_menu(self, ctx: components.Context) -> None:
         roles = ", ".join(role.name for role in ctx.select_roles.values())
         await ctx.respond(f"Selected roles: {roles}")
 
     @components.as_select_menu(hikari.ComponentType.USER_SELECT_MENU)
-    async def on_user_select(self, ctx: components.Context) -> None:
+    async def on_user_menu(self, ctx: components.Context) -> None:
         users = ", ".join(map(str, ctx.select_users.values()))
         await ctx.respond(f"Selected users: {users}")
 
     @components.as_select_menu(hikari.ComponentType.MENTIONABLE_SELECT_MENU)
-    async def on_mentionable_select(self, ctx: components.Context) -> None:
+    async def on_mentionable_menuself, ctx: components.Context) -> None:
         role_count = len(ctx.select_roles)
         user_count = len(ctx.select_users)
         await ctx.respond(f"Selected {user_count} users and {role_count} roles")
