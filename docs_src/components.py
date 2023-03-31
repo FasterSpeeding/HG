@@ -24,8 +24,8 @@ class LinkColumn(components.ActionColumnExecutor):
 
 
 class SelectColumn(components.ActionColumnExecutor):
-    @components.as_channel_select
-    async def on_channel_select(self, ctx: components.Context) -> None:
+    @components.as_channel_menu
+    async def on_channel_menu(self, ctx: components.Context) -> None:
         await ctx.respond(f"Selected {len(ctx.select_channels)} channels")
 
     @components.with_option("borf", "dog")
