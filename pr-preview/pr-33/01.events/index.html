@@ -527,9 +527,9 @@ message <code>"Good morning human-kyun"</code> if the content matches `"Hello Bo
 <h3 id="intents">Intents<a class="headerlink" href="#intents" title="Permanent link">#</a></h3>
 <p>Remember "intents" which were mentioned briefly earlier, well these are important here as we have to
 make sure that the correct intents are enabled for the events we want the bot to listen for when
-creating [hikari.GatewayBot][hikari.impl.bot.GatewayBot]. More information on which intents are needed
-for an event can be found at <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/intents/#hikari.intents.Intents">hikari.Intents</a> and if an event isn't mentioned
-in this list then it is always enabled.</p>
+creating <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/gateway_bot/#hikari.impl.gateway_bot.GatewayBot">hikari.GatewayBot</a>. More information on which intents
+are needed for an event can be found at <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/intents/#hikari.intents.Intents">hikari.Intents</a> and if an event
+isn't mentioned in this list then it is always enabled.</p>
 <h5 id="privileged-intents">Privileged intents<a class="headerlink" href="#privileged-intents" title="Permanent link">#</a></h5>
 <p>An important point to note is that the message create event that examples listens for is considered
 "privileged" by Discord meaning that you have to enable them in Discord's application settings before
