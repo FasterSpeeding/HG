@@ -28,7 +28,7 @@ Gateway bots are what you'll most likely want. These allow you to listen for act
 on Discord by subscribing to [events][]. All a gateway bot needs to work is a bot token, and
 an internet connection which can reach Discord and maintain a persistent connection.
 
-The example above shows how you'd initiate and the [standard gateway bot implementation][hikari.impl.bot.GatewayBot],
+The example above shows how you'd initiate and the [standard gateway bot implementation][hikari.impl.gateway_bot.GatewayBot],
 it should be noted that the only required argument here is the token (first argument). The
 other arguments configure what entities this should cache in-process and the [intents][] which
 indicate what events the bot wants to receive, more information on these can be found in [events][].
