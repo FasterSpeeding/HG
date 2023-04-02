@@ -507,7 +507,7 @@ Right now text inputs always take up a whole row.</p>
     <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">AppCommandContext</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">alluka</span><span class="o">.</span><span class="n">Injected</span><span class="p">[</span><span class="n">modals</span><span class="o">.</span><span class="n">Client</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">modal</span> <span class="o">=</span> <span class="n">modal_template</span><span class="p">()</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">set_modal</span><span class="p">(</span><span class="s2">&quot;custom_id&quot;</span><span class="p">,</span> <span class="n">modal</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">register_modal</span><span class="p">(</span><span class="s2">&quot;custom_id&quot;</span><span class="p">,</span> <span class="n">modal</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">create_modal_response</span><span class="p">(</span>
         <span class="s2">&quot;Who&#39;s sussy?&quot;</span><span class="p">,</span> <span class="s2">&quot;custom_id&quot;</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="n">modal</span><span class="o">.</span><span class="n">rows</span>
     <span class="p">)</span>
@@ -515,8 +515,8 @@ Right now text inputs always take up a whole row.</p>
 <p>As shown above, creating a modal in response to a slash command, context menu,
 or message component use is simple. First you register the modal instance to a
 top-level custom ID by calling
-<a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.ModalClient.set_modal">ModalClient.set_modal</a> (which defaults to 1
-use and a 2 minute timeout). Then you can pass
+<a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.ModalClient.register_modal">ModalClient.register_modal</a> (which
+defaults to 1 use and a 2 minute timeout). Then you can pass
 <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.Modal.rows">Modal.rows</a> to <code>create_modal_response</code> as <code>components</code>
 alongside the top-level custom ID and the model's title. A modal can only be
 triggered as the first response (before deferring).</p>

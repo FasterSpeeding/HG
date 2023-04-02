@@ -527,9 +527,9 @@ message <code>"Good morning human-kyun"</code> if the content matches `"Hello Bo
 <h3 id="intents">Intents<a class="headerlink" href="#intents" title="Permanent link">#</a></h3>
 <p>Remember "intents" which were mentioned briefly earlier, well these are important here as we have to
 make sure that the correct intents are enabled for the events we want the bot to listen for when
-creating <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot">hikari.GatewayBot</a>. More information on which intents are needed
-for an event can be found at <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/intents/#hikari.intents.Intents">hikari.Intents</a> and if an event isn't mentioned
-in this list then it is always enabled.</p>
+creating <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/gateway_bot/#hikari.impl.gateway_bot.GatewayBot">hikari.GatewayBot</a>. More information on which intents
+are needed for an event can be found at <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/intents/#hikari.intents.Intents">hikari.Intents</a> and if an event
+isn't mentioned in this list then it is always enabled.</p>
 <h5 id="privileged-intents">Privileged intents<a class="headerlink" href="#privileged-intents" title="Permanent link">#</a></h5>
 <p>An important point to note is that the message create event that examples listens for is considered
 "privileged" by Discord meaning that you have to enable them in Discord's application settings before
@@ -588,7 +588,7 @@ to the bot type you're using. More information on this can be found in Tanjun's 
 
     <span class="c1"># ... Handle edit.</span>
 </code></pre></div>
-<p><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot.wait_for">GatewayBot.wait_for</a> can be used to wait for the next
+<p>[GatewayBot.wait_for][hikari.impl.bot.GatewayBot.wait_for] can be used to wait for the next
 received event which matches a type and predicate (filter). In the above example we wait
 60 seconds for a message update event where <code>event.message_id</code> matches a specific message
 and process the next edit or delete the message if we don't get a response in time.</p>
@@ -604,7 +604,7 @@ and process the next edit or delete the message if we don't get a response in ti
         <span class="k">async</span> <span class="k">for</span> <span class="n">event</span> <span class="ow">in</span> <span class="n">iterator</span><span class="p">:</span>
             <span class="o">...</span>  <span class="c1"># ... process message create</span>
 </code></pre></div>
-<p><a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot.stream">GatewayBot.stream</a> provides an asynchronous iterator which
+<p>[GatewayBot.stream][hikari.impl.bot.GatewayBot.stream] provides an asynchronous iterator which
 you can use to iterate over events as they're received. This comes with several chainable methods
 such as the filter method (more information on which can be found on
 <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/iterators/#hikari.iterators.LazyIterator">LazyIterator</a>) and will cache events received between iterations.
@@ -631,7 +631,7 @@ using the decorator method <a class="autorefs autorefs-external" href="https://t
 and the method <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/abc/#tanjun.abc.Component.add_listener">Component.add_listener</a> which add dependency
 injection support to event dispatch and register the relevant event listeners when the Tanjun
 client is started; <code>with_listener</code> adds support for unions when parsing event types from the
-callback's signature but otherwise matches <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/impl/bot/#hikari.impl.bot.GatewayBot.listen">GatewayBot.listen</a>.</p>
+callback's signature but otherwise matches [GatewayBot.listen][hikari.impl.bot.GatewayBot.listen].</p>
 
 
 
