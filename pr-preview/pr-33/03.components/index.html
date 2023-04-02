@@ -526,7 +526,7 @@ text select menus require the bot to pre-define up to 25 string options for it.<
 <p>By default <code>min_values</code> is set to <code>0</code> and <code>max_values</code> is set to <code>1</code>, but
 <code>max_values</code> can be set to up to <code>25</code> to allow the user to select multiple
 options before finalising (sending) the interaction.</p>
-<p>[as_channel_menu][yuyo.components.as_channel_menu] allows you to limit the channel
+<p><a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.as_channel_menu">as_channel_menu</a> allows you to limit the channel
 types which can be selected.</p>
 <h3 id="rows">Rows<a class="headerlink" href="#rows" title="Permanent link">#</a></h3>
 <p>While <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ActionColumnExecutor">ActionColumnExecutor</a> abstracts away building individual
@@ -553,7 +553,7 @@ add button call would add a 4th row for the new button.</p>
 <p>As shown above, sending the components in an action column is easy. First you
 pass <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ActionColumnExecutor.rows">ActionColumnExecutor.rows</a> as
 <code>components=executor.rows</code> to the create message method, then you call
-[ComponentClient.register_executor][yuyo.components.ComponentClient.register_executor]
+<a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/components/#yuyo.components.ComponentClient.register_executor">ComponentClient.register_executor</a>
 with the created message and executor to make it listen for interactions.</p>
 <h3 id="and-now-for-something-completely-different">And now for something completely different<a class="headerlink" href="#and-now-for-something-completely-different" title="Permanent link">#</a></h3>
 <p>This guide only covers one of <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s different approaches for declaring
