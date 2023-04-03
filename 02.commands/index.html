@@ -767,7 +767,7 @@ restrictions and do not have descriptions nor options.</p>
     <span class="c1"># ... Yetting logic</span>
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">user</span><span class="si">}</span><span class="s2"> got yeeted!&quot;</span><span class="p">,</span> <span class="n">delete_after</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="user menu example" src="../images/user_menu_example.png" width="40%" /></p>
+<p><img alt="user menu example" src="../images/user_menu_example.png" /></p>
 <p>And there's user context menus which will always take
 <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/interactions/base_interactions/#hikari.interactions.base_interactions.InteractionMember">hikari.InteractionMember</a>
 positionally as their 2nd argument.</p>
@@ -801,9 +801,10 @@ commands).</p>
 <code>follow_wrapped</code> argument. Setting this to <a class="autorefs autorefs-external" href="https://docs.python.org/3.9/library/constants.html#True">True</a> will make it apply the
 decorator's change to every compatible command declaration in that decorator
 chain (rather than just the one it's directly on).</p>
-<p>Since context menus take their only value (the user or message) positionally as
-the second argument you'll have to make sure the relevant option can be passed
-both positionally (as the 2nd argument) and by its name.</p>
+<p>When using the same callback for a context menu and slash or message command
+you'll have to make sure the main option can be passed both positionally
+(as the 2nd argument) and by its name since context menus will still pass it
+positonally.</p>
 <h3 id="checks">Checks<a class="headerlink" href="#checks" title="Permanent link">#</a></h3>
 <p>Checks are callbacks which decide whether a command or group of commands should
 run for a command execution context. There's a collection of checks in
