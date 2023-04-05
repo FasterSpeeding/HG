@@ -511,6 +511,7 @@ Right now text inputs always take up a whole row.</p>
     <span class="n">client</span><span class="o">.</span><span class="n">register_modal</span><span class="p">(</span><span class="n">custom_id</span><span class="p">,</span> <span class="n">modal</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">create_modal_response</span><span class="p">(</span>
         <span class="s2">&quot;Who&#39;s sussy?&quot;</span><span class="p">,</span> <span class="n">custom_id</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="n">modal</span><span class="o">.</span><span class="n">rows</span>
+    <span class="p">)</span>
 </code></pre></div>
 <p>As shown above, creating a modal in response to a slash command, context menu,
 or message component use is simple. First you register the modal instance to a
@@ -520,6 +521,8 @@ defaults to 1 use and a 2 minute timeout). Then you can pass
 <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/modals/#yuyo.modals.Modal.rows">Modal.rows</a> to <code>create_modal_response</code> as <code>components</code>
 alongside the top-level custom ID and the model's title. A modal can only be
 triggered as the first response (before deferring).</p>
+<p>This example uses the interaction's ID as the modal's custom ID as these meet
+the requirement of having to be unique per registered modal.</p>
 <h3 id="row-row-fight-the-power">Row! Row! Fight the power!<a class="headerlink" href="#row-row-fight-the-power" title="Permanent link">#</a></h3>
 <p>This guide only covers one of <a class="autorefs autorefs-external" href="https://yuyo.cursed.solutions/reference/#yuyo">Yuyo</a>'s approaches for declaring modals
 and only gives a basic overview. For more information on Yuyo's modals
