@@ -34,7 +34,8 @@ async def command(
     ctx: tanjun.abc.AppCommandContext, client: alluka.Injected[modals.Client]
 ) -> None:
     modal = modal_template()
-    client.register_modal("custom_id", modal)
+    custom_id = str(ctx.interaction.id)
+    client.register_modal(custom_id, modal)
     await ctx.create_modal_response(
-        "Who's sussy?", "custom_id", components=modal.rows
+        "Who's sussy?", custom_id, components=modal.rows
     )
