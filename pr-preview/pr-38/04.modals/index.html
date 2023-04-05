@@ -507,10 +507,10 @@ Right now text inputs always take up a whole row.</p>
     <span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">AppCommandContext</span><span class="p">,</span> <span class="n">client</span><span class="p">:</span> <span class="n">alluka</span><span class="o">.</span><span class="n">Injected</span><span class="p">[</span><span class="n">modals</span><span class="o">.</span><span class="n">Client</span><span class="p">]</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="n">modal</span> <span class="o">=</span> <span class="n">modal_template</span><span class="p">()</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">register_modal</span><span class="p">(</span><span class="s2">&quot;custom_id&quot;</span><span class="p">,</span> <span class="n">modal</span><span class="p">)</span>
+    <span class="n">custom_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">ctx</span><span class="o">.</span><span class="n">interaction</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">register_modal</span><span class="p">(</span><span class="n">custom_id</span><span class="p">,</span> <span class="n">modal</span><span class="p">)</span>
     <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">create_modal_response</span><span class="p">(</span>
-        <span class="s2">&quot;Who&#39;s sussy?&quot;</span><span class="p">,</span> <span class="s2">&quot;custom_id&quot;</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="n">modal</span><span class="o">.</span><span class="n">rows</span>
-    <span class="p">)</span>
+        <span class="s2">&quot;Who&#39;s sussy?&quot;</span><span class="p">,</span> <span class="n">custom_id</span><span class="p">,</span> <span class="n">components</span><span class="o">=</span><span class="n">modal</span><span class="o">.</span><span class="n">rows</span>
 </code></pre></div>
 <p>As shown above, creating a modal in response to a slash command, context menu,
 or message component use is simple. First you register the modal instance to a
