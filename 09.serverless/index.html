@@ -427,12 +427,12 @@
 <h1 id="serverless">Serverless<a class="headerlink" href="#serverless" title="Permanent link">#</a></h1>
 <h3 id="asgi">ASGI<a class="headerlink" href="#asgi" title="Permanent link">#</a></h3>
 <p>While Hikari's standard RESTBot implementation works by running an AIOHTTP server, this isn't the only way you can listen to interactions as a REST server.</p>
-<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">bot</span> <span class="o">=</span> <span class="n">yuyo</span><span class="o">.</span><span class="n">AsgiBot</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKEN&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="s2">&quot;Bot&quot;</span><span class="p">,</span> <span class="n">asgi_managed</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">tanjun</span><span class="o">.</span><span class="n">Client</span><span class="o">.</span><span class="n">from_rest_bot</span><span class="p">(</span><span class="n">bot</span><span class="p">,</span> <span class="n">bot_managed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="c1"># ... Other bot setup.</span>
 
-<span class="n">app</span> <span class="o">=</span> <span class="n">fastapi</span><span class="o">.</span><span class="n">FastAPI</span><span class="p">()</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">fastapi</span><span class="o">.</span><span class="n">FastAPI</span><span class="p">(</span><span class="n">on_startup</span><span class="o">=</span><span class="p">[</span><span class="n">bot</span><span class="o">.</span><span class="n">start</span><span class="p">],</span> <span class="n">on_shutdown</span><span class="o">=</span><span class="p">[</span><span class="n">bot</span><span class="o">.</span><span class="n">close</span><span class="p">])</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">&quot;/bot&quot;</span><span class="p">,</span> <span class="n">bot</span><span class="p">)</span>
 </code></pre></div>
