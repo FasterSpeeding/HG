@@ -19,7 +19,7 @@ import yuyo
 
 
 def fastapi_mount():
-    bot = yuyo.AsgiBot(os.environ["TOKEN"].strip(), "Bot", asgi_managed=False)
+    bot = yuyo.AsgiBot(os.environ["TOKEN"].strip(), asgi_managed=False)
     tanjun.Client.from_rest_bot(bot, bot_managed=True)
 
     # ... Other bot setup.
