@@ -58,4 +58,5 @@ keep the payloads encrypted in-transit.
 
 Once you've got the networking setup and the bot running you'll want to enter the bot's web address
 here to tell Discord to start sending interaction requests to the bot. You should see a failed Ping
-request before a successful one in the logs as Discord validates the endpoint.
+request and a successful ping in the logs as Discord validates the endpoint (these may be received
+either way around).
