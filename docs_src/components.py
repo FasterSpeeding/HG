@@ -35,17 +35,17 @@ class SelectColumn(components.ActionColumnExecutor):
     async def on_text_menu(self, ctx: components.Context) -> None:
         await ctx.respond("Animals: " + ", ".join(ctx.select_texts))
 
-    @components.as_select_menu(hikari.ComponentType.ROLE_SELECT_MENU)
+    @components.as_role_menu
     async def on_role_menu(self, ctx: components.Context) -> None:
         roles = ", ".join(role.name for role in ctx.select_roles.values())
         await ctx.respond(f"Selected roles: {roles}")
 
-    @components.as_select_menu(hikari.ComponentType.USER_SELECT_MENU)
+    @components.as_user_menu
     async def on_user_menu(self, ctx: components.Context) -> None:
         users = ", ".join(map(str, ctx.select_users.values()))
         await ctx.respond(f"Selected users: {users}")
 
-    @components.as_select_menu(hikari.ComponentType.MENTIONABLE_SELECT_MENU)
+    @components.as_mentionable_menu
     async def on_mentionable_menu(self, ctx: components.Context) -> None:
         role_count = len(ctx.select_roles)
         user_count = len(ctx.select_users)
