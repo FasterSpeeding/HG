@@ -26,29 +26,29 @@ class LinkColumn(components.ActionColumnExecutor):
 class SelectColumn(components.ActionColumnExecutor):
     @components.as_channel_menu
     async def on_channel_menu(self, ctx: components.Context) -> None:
-        await ctx.respond(f"Selected {len(ctx.select_channels)} channels")
+        await ctx.respond(f"Selected {len(ctx.selected_channels)} channels")
 
     @components.with_option("borf", "dog")
     @components.with_option("meow", "cat")
     @components.with_option("label", "value")
     @components.as_text_menu(min_values=0, max_values=3)
     async def on_text_menu(self, ctx: components.Context) -> None:
-        await ctx.respond("Animals: " + ", ".join(ctx.select_texts))
+        await ctx.respond("Animals: " + ", ".join(ctx.selected_texts))
 
     @components.as_role_menu
     async def on_role_menu(self, ctx: components.Context) -> None:
-        roles = ", ".join(role.name for role in ctx.select_roles.values())
+        roles = ", ".join(role.name for role in ctx.selected_roles.values())
         await ctx.respond(f"Selected roles: {roles}")
 
     @components.as_user_menu
     async def on_user_menu(self, ctx: components.Context) -> None:
-        users = ", ".join(map(str, ctx.select_users.values()))
+        users = ", ".join(map(str, ctx.selected_users.values()))
         await ctx.respond(f"Selected users: {users}")
 
     @components.as_mentionable_menu
     async def on_mentionable_menu(self, ctx: components.Context) -> None:
-        role_count = len(ctx.select_roles)
-        user_count = len(ctx.select_users)
+        role_count = len(ctx.selected_roles)
+        user_count = len(ctx.selected_users)
         await ctx.respond(f"Selected {user_count} users and {role_count} roles")
 
 
