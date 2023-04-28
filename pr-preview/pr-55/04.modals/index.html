@@ -477,6 +477,7 @@ clients make it a lot easier and is the recommended approach.</p>
 <h3 id="making-modals">Making modals<a class="headerlink" href="#making-modals" title="Permanent link">#</a></h3>
 <div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Modal</span><span class="p">(</span><span class="n">modals</span><span class="o">.</span><span class="n">Modal</span><span class="p">):</span>
     <span class="k">async</span> <span class="k">def</span> <span class="nf">callback</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
         <span class="n">ctx</span><span class="p">:</span> <span class="n">modals</span><span class="o">.</span><span class="n">ModalContext</span><span class="p">,</span>
         <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">modals</span><span class="o">.</span><span class="n">text_input</span><span class="p">(</span>
             <span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;What is their name?&quot;</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">20</span>
@@ -487,7 +488,6 @@ clients make it a lot easier and is the recommended approach.</p>
             <span class="n">style</span><span class="o">=</span><span class="n">hikari</span><span class="o">.</span><span class="n">TextInputStyle</span><span class="o">.</span><span class="n">PARAGRAPH</span><span class="p">,</span>
         <span class="p">),</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="k">await</span> <span class="n">ctx</span><span class="o">.</span><span class="n">respond</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is sussy because they </span><span class="si">{</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>Modals take the shape of dialogue boxes which show up on top of everything else
 for the user who triggered the relevant interaction. The above example shows up
