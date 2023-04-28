@@ -9,31 +9,34 @@
 # You should have received a copy of the CC0 Public Domain Dedication along with this software.
 # If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
 
+# pyright: reportIncompatibleMethodOverride=warning
+
 import alluka
 import hikari
 import tanjun
 from yuyo import modals
 
 
-@modals.as_modal_template
-async def modal_template(
-    ctx: modals.ModalContext,
-    name: str = modals.text_input(
-        "name", placeholder="What is their name?", max_length=20
-    ),
-    reason: str = modals.text_input(
-        "reason",
-        default="Still likes harry potter.",
-        style=hikari.TextInputStyle.PARAGRAPH,
-    ),
-) -> None:
-    await ctx.respond(f"{name} is sussy because they {reason}")
+class Modal(modals.Modal):
+    async def callback(
+        self,
+        ctx: modals.ModalContext,
+        name: str = modals.text_input(
+            "name", placeholder="What is their name?", max_length=20
+        ),
+        reason: str = modals.text_input(
+            "reason",
+            default="Still likes harry potter.",
+            style=hikari.TextInputStyle.PARAGRAPH,
+        ),
+    ) -> None:
+        await ctx.respond(f"{name} is sussy because they {reason}")
 
 
 async def command(
     ctx: tanjun.abc.AppCommandContext, client: alluka.Injected[modals.Client]
 ) -> None:
-    modal = modal_template()
+    modal = Modal()
     custom_id = str(ctx.interaction.id)
     client.register_modal(custom_id, modal)
     await ctx.create_modal_response(
