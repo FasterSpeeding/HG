@@ -17,6 +17,7 @@ from yuyo import modals
 
 class Modal(modals.Modal):
     async def callback(
+        self,
         ctx: modals.ModalContext,
         name: str = modals.text_input(
             "name", placeholder="What is their name?", max_length=20
