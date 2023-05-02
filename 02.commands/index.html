@@ -688,7 +688,7 @@ to mark individual responses as ephemeral.</p>
 <p><img alt="slash command group example" src="../images/slash_command_group_example.png" /></p>
 <p>Since normal slash commands can't have spaces in their names, you have to use
 slash command "groups" to get spaces. These are limited to only being nested
-once (so a slash command group can be put in a top-level group but can't then
+once (so a slash command group can be put in a top-level group but you can't
 put a group in that sub-group) and some configuration is limited to top level
 commands so for what you can configure for sub-commands see
 <a class="autorefs autorefs-external" href="https://tanjun.cursed.solutions/reference/commands/#tanjun.commands.slash.SlashCommandGroup.as_sub_command">SlashCommandGroup.as_sub_command</a> and
@@ -714,7 +714,7 @@ by passing <code>mention_prefix=True</code> when initialising the bot (calling
 </code></pre></div>
 <p>The above example shows a message command that would be triggered by
 <code>{prefix}meow</code> and where the "weebish" argument can optionally be provided
-by sending <code>{prefix}weebish true</code>.</p>
+by sending <code>{prefix}meow --weebish true</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@tanjun</span><span class="o">.</span><span class="n">as_message_command_group</span><span class="p">(</span><span class="s2">&quot;uwu group&quot;</span><span class="p">)</span>
 <span class="k">async</span> <span class="k">def</span> <span class="nf">message_command_group</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">tanjun</span><span class="o">.</span><span class="n">abc</span><span class="o">.</span><span class="n">MessageContext</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="o">...</span>
