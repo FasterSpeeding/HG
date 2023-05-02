@@ -609,8 +609,8 @@ which you can use to iterate over events as they're received. This comes with se
 methods such as the filter method (more information on which can be found on
 <a class="autorefs autorefs-external" href="https://docs.hikari-py.dev/en/latest/reference/hikari/iterators/#hikari.iterators.LazyIterator">LazyIterator</a>) and will cache events received between iterations.
 The <code>limit</code> keyword argument can be used to limit how many events are cached and, while <code>timeout</code>
-defaults to <a class="autorefs autorefs-external" href="https://docs.python.org/3.9/library/constants.html#None">None</a> (unlimited) for this, you likely want use <code>timeout</code> to specify how many
-seconds it should wait between events before ending iteration.</p>
+defaults to <a class="autorefs autorefs-external" href="https://docs.python.org/3.9/library/constants.html#None">None</a> (unlimited) for this, you'll likely want to use <code>timeout</code> to specify how
+many seconds it should wait between events before ending iteration.</p>
 <h3 id="event-handling-in-frameworks">Event handling in frameworks<a class="headerlink" href="#event-handling-in-frameworks" title="Permanent link">#</a></h3>
 <p>Just a final note, frameworks which build on top of Hikari will have their own abstractions and
 approaches of handling listening to events.</p>
