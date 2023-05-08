@@ -44,6 +44,8 @@ markdown_extensions:
 plugins:
   - autorefs
   - search
+  - minify:
+      minify_html: true
   - mkdocstrings:
       handlers:
         python:
