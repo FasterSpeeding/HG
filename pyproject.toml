@@ -19,17 +19,17 @@ pep585-activation = "always"
 show_source = false
 statistics = false
 ignore = [
-    "DALL000", 
-    "D100", 
-    "D101", 
-    "D102", 
-    "D103", 
-    "E501", 
-    "FA100", 
-    "FA101", 
-    "F841", 
+    "DALL000",
+    "D100",
+    "D101",
+    "D102",
+    "D103",
+    "E501",
+    "FA100",
+    "FA101",
+    "F841",
     "INP001",
-    "S101", 
+    "S101",
     "T101",
     "W503"
 ]
