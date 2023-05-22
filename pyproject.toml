@@ -31,7 +31,7 @@ ignore = [
     "INP001",
     "S101",
     "T101",
-    "W503"
+    "W503", 
 ]
 per-file-ignores = [
     "docs_src/events.py: F821",
