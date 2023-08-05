@@ -57,4 +57,5 @@ plugins:
             - https://yuyo.cursed.solutions/objects.inv
 
 watch:
+  - docs
   - docs_src
