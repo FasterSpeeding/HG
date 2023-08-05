@@ -1,5 +1,6 @@
 # mkdocs.yml
 site_name: "A h'y Hikari guide"
+repo_url: https://github.com/FasterSpeeding/HG
 theme:
   name: material
   icon:
