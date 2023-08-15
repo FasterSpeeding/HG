@@ -9,7 +9,7 @@
 # You should have received a copy of the CC0 Public Domain Dedication along with this software.
 # If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
 
-# pyright: reportIncompatibleMethodOverride=warning
+# pyright: reportIncompatibleMethodOverride=none
 
 import alluka
 import hikari
@@ -18,7 +18,7 @@ from yuyo import modals
 
 
 class Modal(modals.Modal):
-    async def callback(  # pyright: ignore[reportIncompatibleMethodOverride]
+    async def callback(
         self,
         ctx: modals.ModalContext,
         name: str = modals.text_input(
