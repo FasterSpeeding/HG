@@ -9,7 +9,6 @@
 # You should have received a copy of the CC0 Public Domain Dedication along with this software.
 # If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
 import asyncio
-import typing
 
 import hikari
 import tanjun
@@ -27,7 +26,7 @@ def hikari_listener():
             await event.message.respond("Good morning human-kyun")
 
 
-class DatabaseProto(typing.Protocol):
+class DatabaseProto:
     async def start(self) -> None:
         ...
 
