@@ -37,7 +37,7 @@ class DatabaseProto(typing.Protocol):
 
 def lifetime_management():
     bot = hikari.GatewayBot("TOKEN")
-    db: DatabaseProto = NotImplemented
+    db: DatabaseProto = DatabaseProto()
 
     @bot.listen(hikari.StartingEvent)
     async def on_starting_event(event: hikari.StartingEvent) -> None:
