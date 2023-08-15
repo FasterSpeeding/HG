@@ -18,7 +18,7 @@ from yuyo import modals
 
 
 class Modal(modals.Modal):
-    async def callback(
+    async def callback(  # pyright: ignore[reportIncompatibleMethodOverride]
         self,
         ctx: modals.ModalContext,
         name: str = modals.text_input(
