@@ -69,22 +69,19 @@ def message_command_example():
     @tanjun.as_message_command("meow")
     async def message_command(
         ctx: tanjun.abc.MessageContext, weebish: tanjun.annotations.Bool = False
-    ) -> None:
-        ...
+    ) -> None: ...
 
 
 def message_command_group_example():
     @tanjun.as_message_command_group("uwu group")
-    async def message_command_group(ctx: tanjun.abc.MessageContext) -> None:
-        ...
+    async def message_command_group(ctx: tanjun.abc.MessageContext) -> None: ...
 
     @tanjun.annotations.with_annotated_args
     @message_command_group.as_sub_command("echo")
     async def sub_command(
         ctx: tanjun.abc.MessageContext,
         content: typing.Annotated[annotations.Str, annotations.Greedy()],
-    ) -> None:
-        ...
+    ) -> None: ...
 
 
 def user_menu_example():
@@ -134,8 +131,7 @@ def muti_command_example():
 
 def load_from_scope():
     @tanjun.as_slash_command("name", "description")
-    async def slash_command(ctx: tanjun.abc.SlashContext) -> None:
-        ...
+    async def slash_command(ctx: tanjun.abc.SlashContext) -> None: ...
 
     component = tanjun.Component().load_from_scope()
 
@@ -146,12 +142,10 @@ def load_with_command():
     @component.with_command(follow_wrapped=True)
     @tanjun.as_slash_command("name", "description")
     @tanjun.as_message_command("name")
-    async def command(ctx: tanjun.abc.Context) -> None:
-        ...
+    async def command(ctx: tanjun.abc.Context) -> None: ...
 
     @tanjun.as_slash_command("name", "description")
-    async def other_command(ctx: tanjun.abc.Context) -> None:
-        ...
+    async def other_command(ctx: tanjun.abc.Context) -> None: ...
 
     component.add_command(other_command)
 
