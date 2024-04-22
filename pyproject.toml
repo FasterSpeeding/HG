@@ -111,6 +111,7 @@ reportPropertyTypeMismatch = "error"
 reportUninitializedInstanceVariable = "error"
 reportUnnecessaryTypeIgnoreComment = "error"
 reportUnusedCallResult = "none"  # Enforces doing `_ = ...`.
+reportIncompatibleVariableOverride= "warning"
 
 # Don't care about these
 reportUnusedFunction = "none"
