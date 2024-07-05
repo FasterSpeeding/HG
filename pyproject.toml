@@ -113,9 +113,6 @@ reportUnnecessaryTypeIgnoreComment = "error"
 reportUnusedCallResult = "none"  # Enforces doing `_ = ...`.
 reportIncompatibleVariableOverride = "warning"
 
-reportUntypedFunctionDecorator = "warning"  # Currently a bug with `bot.listen()`.
-
-
 # Don't care about these
 reportUnusedFunction = "none"
 reportUnusedVariable = "none"
