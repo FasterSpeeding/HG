@@ -17,8 +17,6 @@ import tanjun
 def hikari_listener():
     bot = hikari.GatewayBot("TOKEN")
 
-    reveal_type(bot.listen)
-
     @bot.listen()
     async def on_event(event: hikari.MessageCreateEvent) -> None:
         if not event.is_human:
