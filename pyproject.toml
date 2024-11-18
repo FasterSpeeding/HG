@@ -78,7 +78,7 @@ mypy_allowed_to_fail = true
 mypy_targets = ["docs_src"]
 path_ignore = "docs\\/images\\/.+"
 top_level_targets = ["./docs_src", "./noxfile.py"]
-version constraint = "3.10,<3.14"
+version_constraint = "3.10,<3.14"
 
 [tool.piped.github_actions."*"]
 default_py_ver = "3.12"
