@@ -20,7 +20,7 @@ class LinkColumn(components.ActionColumnExecutor):
     async def on_button(self, ctx: components.Context) -> None:
         await ctx.respond("Button pressed")
 
-    link_button = components.link_button("htts://example.com/yee")
+    link_button = components.link_button("https://example.com/yee")
 
 
 class SelectColumn(components.ActionColumnExecutor):

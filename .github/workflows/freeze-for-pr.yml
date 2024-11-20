@@ -15,14 +15,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@8e5e7e5ab8b370d6c329ec480221332ada57f0ab
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           submodules: "true"
 
-      - name: Set up Python 3.10
-        uses: actions/setup-python@57ded4d7d5e986d7296eab16560982c6dd7c923b
+      - name: Set up Python 3.12
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b
         with:
-          python-version: "3.10"
+          python-version: "3.12"
 
       - name: install prerequisites
         run: |
@@ -32,7 +32,7 @@ jobs:
       - name: Upgrade dependency locks
         run: python -m nox -s freeze-locks bot-package-diff
 
-      - uses: actions/upload-artifact@0b7f8abb1508181956e8e162db84b466c27e18ce
+      - uses: actions/upload-artifact@b4b15b8c7c6ac21ea08fcf65892d2ee8f75cf882
         with:
           name: gogo.patch
           path: gogo.patch

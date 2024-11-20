@@ -42,9 +42,9 @@ indicate what events the bot wants to receive, more information on these can be 
 While there's a lot less direct configuration to RESTBots than Gateway bot, there's a bit
 more to getting it working than with Gateway bot. The RESTBot runs a REST server which
 is meant to receive interaction requests from Discord; this limits it to only knowing when
-users actively interact with the bot through using components and slash commands but also
-means that before this can work you need to have the network setup to allow Discord to
-connect to your bot.
+users actively interact with the bot through using components, slash commands, and context
+menus but means that before this can work you need to have the network setup to allow
+Discord to connect to your bot.
 
 The example above shows how you'd initiate the [standard REST bot implementation][hikari.impl.rest_bot.RESTBot],
 it should be noted that the only requirement arguments here are the token (first argument) and the

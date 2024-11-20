@@ -1,6 +1,5 @@
 -r ../piped/python/base-requirements/nox.in
 -r ../piped/python/base-requirements/type-checking.in
-agraffe>=0.6
 fastapi>=0.92.0
 hikari-tanjun>=2.11
 hikari-yuyo>=1.11.0a1

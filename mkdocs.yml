@@ -1,7 +1,10 @@
 # mkdocs.yml
 site_name: "A h'y Hikari guide"
+repo_url: https://github.com/FasterSpeeding/HG
 theme:
   name: material
+  features:
+    - navigation.prune
   icon:
     admonition:
       note: octicons/tag-16
@@ -19,13 +22,14 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: cyan
+      primary: pink
+      accent: pink
       toggle:
         icon: material/lightbulb
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: cyan
+      primary: pink
       toggle:
         icon: material/lightbulb
         name: Switch to light mode
@@ -44,11 +48,13 @@ markdown_extensions:
 plugins:
   - autorefs
   - search
+  - minify:
+      minify_html: true
   - mkdocstrings:
       handlers:
         python:
           import:
-            - https://docs.python.org/3.9/objects.inv
+            - https://docs.python.org/3.13/objects.inv
             - https://docs.hikari-py.dev/en/latest/objects.inv
             - https://tanjun.cursed.solutions/objects.inv
             - https://tanchan.cursed.solutions/objects.inv

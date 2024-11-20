@@ -9,7 +9,6 @@
 # You should have received a copy of the CC0 Public Domain Dedication along with this software.
 # If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
 import asyncio
-import typing
 
 import hikari
 import tanjun
@@ -27,17 +26,15 @@ def hikari_listener():
             await event.message.respond("Good morning human-kyun")
 
 
-class DatabaseProto(typing.Protocol):
-    async def start(self) -> None:
-        ...
+class DatabaseProto:
+    async def start(self) -> None: ...
 
-    async def stop(self) -> None:
-        ...
+    async def stop(self) -> None: ...
 
 
 def lifetime_management():
     bot = hikari.GatewayBot("TOKEN")
-    db: DatabaseProto
+    db: DatabaseProto = DatabaseProto()
 
     @bot.listen(hikari.StartingEvent)
     async def on_starting_event(event: hikari.StartingEvent) -> None:
@@ -93,9 +90,7 @@ def tanjun_listener():
     @component.with_listener()
     async def on_member_event(
         event: hikari.MemberCreateEvent | hikari.MemberUpdateEvent,
-    ):
-        ...
+    ): ...
 
     @component.with_listener(hikari.StartedEvent, hikari.StartingEvent)
-    async def on_event(event: hikari.Event):
-        ...
+    async def on_event(event: hikari.Event): ...
