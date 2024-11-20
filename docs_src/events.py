@@ -58,7 +58,7 @@ def wait_for():
                 predicate=lambda event: event.message_id == message.id,
             )
 
-        except asyncio.TimeoutError:
+        except TimeoutError:
             # In this example we try to delete the message if it's not edited by
             # author within 60 seconds.
             try:
