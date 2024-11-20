@@ -8,7 +8,6 @@
 #
 # You should have received a copy of the CC0 Public Domain Dedication along with this software.
 # If not, see <https://creativecommons.org/publicdomain/zero/1.0/>.
-import asyncio
 
 import hikari
 import tanjun
@@ -55,7 +54,7 @@ def wait_for():
                 predicate=lambda event: event.message_id == message.id,
             )
 
-        except asyncio.TimeoutError:
+        except TimeoutError:
             # In this example we try to delete the message if it's not edited by
             # author within 60 seconds.
             try:
