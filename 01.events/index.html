@@ -26,7 +26,7 @@
             <span class=n>predicate</span><span class=o>=</span><span class=k>lambda</span> <span class=n>event</span><span class=p>:</span> <span class=n>event</span><span class=o>.</span><span class=n>message_id</span> <span class=o>==</span> <span class=n>message</span><span class=o>.</span><span class=n>id</span><span class=p>,</span>
         <span class=p>)</span>
 
-    <span class=k>except</span> <span class=n>asyncio</span><span class=o>.</span><span class=n>TimeoutError</span><span class=p>:</span>
+    <span class=k>except</span> <span class=ne>TimeoutError</span><span class=p>:</span>
         <span class=c1># In this example we try to delete the message if it&#39;s not edited by</span>
         <span class=c1># author within 60 seconds.</span>
         <span class=k>try</span><span class=p>:</span>
