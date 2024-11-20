@@ -2,7 +2,7 @@
 include = ".*pyi?$"
 line-length = 84
 skip-magic-trailing-comma = true
-target-version = ["py310"]
+target-version = ["py312"]
 
 [tool.flake8]
 accept-encodings = "utf-8"
@@ -14,7 +14,7 @@ ignore-decorators = "overload"
 max-complexity = 20
 max-function-length = 100
 max-line-length = 100
-min_python_version = "3.10"
+min_python_version = "3.12"
 pep585-activation = "always"
 show_source = false
 statistics = false
@@ -34,6 +34,7 @@ ignore = [
     "E701",    # Incompatible with black: E701 multiple statements on one line (colon)
     "E704",    # Incompatible with black: E704 multiple statements on one line (def)
     #"ASYNC910", # Return from async function with no guaranteed checkpoint or exception since function definition.
+    "E902",    # Linter bug: TokenError: unterminated string literal (detected at line 1062)
 ]
 per-file-ignores = [
     "*.py: ASYNC910", # Return from async function with no guaranteed checkpoint or exception since function definition.
@@ -48,7 +49,7 @@ force_single_line = true
 
 [tool.mypy]
 # some good strict settings
-python_version = "3.10"
+python_version = "3.12"
 strict = true
 warn_unreachable = true
 
@@ -78,9 +79,10 @@ mypy_allowed_to_fail = true
 mypy_targets = ["docs_src"]
 path_ignore = "docs\\/images\\/.+"
 top_level_targets = ["./docs_src", "./noxfile.py"]
+version_constraint = "3.10,<3.14"
 
 [tool.piped.github_actions."*"]
-default_py_ver = "3.10"
+default_py_ver = "3.12"
 
 [tool.piped.github_actions.freeze_for_pr]
 [tool.piped.github_actions.lint]
@@ -98,7 +100,7 @@ BRANCH_PUSHES = ["master"]
 [tool.pyright]
 include = ["docs_src", "noxfile.py"]
 
-pythonVersion = "3.10"
+pythonVersion = "3.12"
 typeCheckingMode = "strict"
 reportMissingModuleSource = "error"  # Is only "warning" on strict mode.
 
