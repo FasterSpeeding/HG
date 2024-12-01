@@ -1,47 +1,48 @@
+[project]
+name = "HG"
+description = "A h'y Hikari guide."
+requires-python = ">=3.10,<3.14"
+version = "0.1.0"
+
+[dependency-groups]
+docs = [
+    "markdown-include>=0.8",
+    "mkdocs>=1.4.2",
+    "mkdocstrings[python]>=0.19",
+    "mkdocs-material>=8.5.11",
+    "mkdocs-minify-plugin>=0.6.4",
+]
+freeze-locks = ["uv"]
+lint = [
+    "codespell>=2.2.2",
+    "pre-commit-hooks>=4.4",
+    "slotscheck>=0.16.1",
+    "ruff",
+]
+publish = ["flit>=3.8.0"]
+reformat = [
+    "black>=22.10.0",
+    "isort>=5.11.3",
+    "pre-commit-hooks>=4.4",
+    "pycln>=2.1.2",
+    "sort-all>=1.2",
+]
+templating = ["Jinja2>=3.1.2"]
+type-checking = [
+    "mypy>=0.991",
+    "nox",
+    "pyright>=1.1.285",
+    "fastapi>=0.92.0",
+    "hikari-tanjun>=2.11",
+    "hikari-yuyo>=1.11.0a1",
+    "tanchan>=0.2.2",
+]
+
 [tool.black]
 include = ".*pyi?$"
 line-length = 84
 skip-magic-trailing-comma = true
 target-version = ["py312"]
-
-[tool.flake8]
-accept-encodings = "utf-8"
-count = true
-docstring-convention = "numpy"
-eradicate-aggressive = true
-force-future-annotations = true
-ignore-decorators = "overload"
-max-complexity = 20
-max-function-length = 100
-max-line-length = 100
-min_python_version = "3.12"
-pep585-activation = "always"
-show_source = false
-statistics = false
-ignore = [
-    "D100",
-    "D101",
-    "D102",
-    "D103",
-    "E501",
-    "FA100",
-    "FA101",
-    "F841",
-    "INP001",
-    "S101",
-    "T101",
-    "W503",
-    "E701",    # Incompatible with black: E701 multiple statements on one line (colon)
-    "E704",    # Incompatible with black: E704 multiple statements on one line (def)
-    #"ASYNC910", # Return from async function with no guaranteed checkpoint or exception since function definition.
-    "E902",    # Linter bug: TokenError: unterminated string literal (detected at line 1062)
-]
-per-file-ignores = [
-    "*.py: ASYNC910", # Return from async function with no guaranteed checkpoint or exception since function definition.
-    "docs_src/*.py: ASYNC910, DALL000",
-    "docs_src/events.py: ASYNC910, DALL000, F821",
-    "noxfile.py: ASYNC910, DALL000, E402, F401, F402, F403",
-]
 
 [tool.isort]
 profile = "black"
@@ -65,7 +66,7 @@ allow_redefinition = true
 disable_error_code = ["no-untyped-def", "type-abstract"]
 
 [tool.piped]
-default_sessions = ["reformat", "verify-markup",  "flake8", "spell-check",  "type-check"]
+default_sessions = ["reformat", "verify-markup", "lint", "spell-check",  "type-check"]
 hide = [
     "slot-check",
     "build",
@@ -79,7 +80,6 @@ mypy_allowed_to_fail = true
 mypy_targets = ["docs_src"]
 path_ignore = "docs\\/images\\/.+"
 top_level_targets = ["./docs_src", "./noxfile.py"]
-version_constraint = "3.10,<3.14"
 
 [tool.piped.github_actions."*"]
 default_py_ver = "3.12"
@@ -95,7 +95,6 @@ BRANCH_PUSHES = ["master"]
 [tool.piped.github_actions.type_check]
 [tool.piped.github_actions.update_licence]
 [tool.piped.github_actions.upgrade_locks]
-[tool.piped.github_actions.verify_locks]
 
 [tool.pyright]
 include = ["docs_src", "noxfile.py"]
@@ -118,3 +117,56 @@ reportIncompatibleVariableOverride = "warning"
 # Don't care about these
 reportUnusedFunction = "none"
 reportUnusedVariable = "none"
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "ANN401",  # Dynamically typed expressions (typing.Any) are disallowed in ``
+    "COM812",  # Trailing comma missing (incompatible with black)
+    "D102",    # Missing docstring in public method
+    "D105",    # Missing docstring in magic method
+    "FIX002",  # Line contains TODO, consider resolving the issue
+    "I001",    # [*] Import block is un-sorted or un-formatted
+    "N818",    # Exception name `FailedModuleUnload` should be named with an Error suffix
+    "PYI041",  # Use `float` instead of `int | float`
+    "S101",    # Use of `assert` detected
+    "SIM105",  # Use `contextlib.suppress(Error)` instead of `try`-`except`-`pass`
+    "SIM108",  # Use ternary operator `` instead of `if`-`else`-block
+    "TD002",   # Missing author in TODO; try: `# TODO(<author_name>): ...` or `# TODO @<author_name>: ...`
+    "TD003",   # Missing issue link on the line following this TODO
+
+    "ARG001",  # Unused function argument: ``
+    "B008",    # Do not perform function call `` in argument defaults; instead, perform the call within the function, or read the default from a module-level singleton variable
+    "D100",    # Missing docstring in public module
+    "D101",    # Missing docstring in public class
+    "D102",    # Missing docstring in public method
+    "D103",    # Missing docstring in public function
+    "FBT002",  # Boolean default positional argument in function definition
+    "F841",    # Local variable `` is assigned to but never used
+    "INP001",  # File `` is part of an implicit namespace package. Add an `__init__.py`.
+    "N806",    # Variable `` in function should be lowercase
+    "PIE790",  # [*] Unnecessary `...` literal
+    "PYI013",  # [*] Non-empty class body must not contain `...`
+    "T201",    # `print` found
+]
+
+[tool.ruff.lint.per-file-ignores]
+"noxfile.py" = [
+    "F403",  # `from noxfile import *` used; unable to detect undefined name
+]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 20
+
+[tool.ruff.lint.pycodestyle]
+# Technically this is 120, but black has a policy of "1 or 2 over is fine if it is tidier", so we have to raise this.
+max-line-length = 130
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint.pylint]
+max-args = 20
+max-branches = 20
+max-returns = 15
+max-statements = 100

@@ -21,7 +21,7 @@ So to start off we should work out what type of bot you want to use.
 ##### Gateway bots
 
 ```py
---8<-- "./docs_src/index.py:23:38"
+--8<-- "./docs_src/index.py:22:37"
 ```
 
 Gateway bots are what you'll most likely want. These allow you to listen for actions happening
@@ -36,7 +36,7 @@ indicate what events the bot wants to receive, more information on these can be 
 ##### REST server bots
 
 ```py
---8<-- "./docs_src/index.py:17:19"
+--8<-- "./docs_src/index.py:16:18"
 ```
 
 While there's a lot less direct configuration to RESTBots than Gateway bot, there's a bit
