@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Tanjun Examples - A collection of examples for a Hikari guide.
 # Written in 2023 by Faster Lucina@lmbyrne.dev
 #
@@ -13,13 +12,13 @@ import os
 import hikari
 
 
-def make_rest_bot():
+def make_rest_bot() -> None:
     bot = hikari.RESTBot(os.environ["TOKEN"].strip(), "Bot")
 
     bot.run(path="192.168.1.102", port=8000)
 
 
-def make_gateway_bot():
+def make_gateway_bot() -> None:
     cache_components = (
         hikari.api.CacheComponents.GUILD_CHANNELS
         | hikari.api.CacheComponents.ROLES

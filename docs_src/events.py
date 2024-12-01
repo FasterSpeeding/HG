@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Tanjun Examples - A collection of examples for a Hikari guide.
 # Written in 2023 by Faster Speeding Lucina@lmbyrne.dev
 #
@@ -13,7 +12,7 @@ import hikari
 import tanjun
 
 
-def hikari_listener():
+def hikari_listener() -> None:
     bot = hikari.GatewayBot("TOKEN")
 
     @bot.listen()
@@ -31,7 +30,7 @@ class DatabaseProto:
     async def stop(self) -> None: ...
 
 
-def lifetime_management():
+def lifetime_management() -> None:
     bot = hikari.GatewayBot("TOKEN")
     db: DatabaseProto = DatabaseProto()
 
@@ -45,7 +44,7 @@ def lifetime_management():
     bot.subscribe(hikari.StoppedEvent, on_stopping_event)
 
 
-def wait_for():
+def wait_for() -> None:
     async def handle_edit(bot: hikari.GatewayBot, message: hikari.Message) -> None:
         try:
             edit_event = await bot.wait_for(
@@ -70,7 +69,7 @@ def wait_for():
         # ... Handle edit.
 
 
-def stream():
+def stream() -> None:
     async def stream_follow_ups(
         bot: hikari.GatewayBot, channel: hikari.PartialChannel
     ) -> None:
@@ -79,17 +78,17 @@ def stream():
         )
 
         with iterator:
-            async for event in iterator:
+            async for _event in iterator:
                 ...  # ... process message create
 
 
-def tanjun_listener():
+def tanjun_listener() -> None:
     component = tanjun.Component()
 
     @component.with_listener()
     async def on_member_event(
         event: hikari.MemberCreateEvent | hikari.MemberUpdateEvent,
-    ): ...
+    ) -> None: ...
 
     @component.with_listener(hikari.StartedEvent, hikari.StartingEvent)
-    async def on_event(event: hikari.Event): ...
+    async def on_event(event: hikari.Event) -> None: ...

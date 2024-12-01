@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Tanjun Examples - A collection of examples for a Hikari guide.
 # Written in 2023 by Faster Speeding Lucina@lmbyrne.dev
 #
@@ -16,7 +15,7 @@ import tanjun
 from tanjun import annotations
 
 
-def slash_command_example():
+def slash_command_example() -> None:
     @tanchan.doc_parse.with_annotated_args
     @tanchan.doc_parse.as_slash_command(
         default_to_ephemeral=True,
@@ -53,7 +52,7 @@ def slash_command_example():
             await ctx.respond(f"Successfully banned {user}")
 
 
-def slash_command_group_example():
+def slash_command_group_example() -> None:
     slash_command_group = tanchan.doc_parse.slash_command_group(
         "group", "description"
     )
@@ -64,7 +63,7 @@ def slash_command_group_example():
         await ctx.respond("Called `group name` command")
 
 
-def message_command_example():
+def message_command_example() -> None:
     @tanjun.annotations.with_annotated_args
     @tanjun.as_message_command("meow")
     async def message_command(
@@ -72,7 +71,7 @@ def message_command_example():
     ) -> None: ...
 
 
-def message_command_group_example():
+def message_command_group_example() -> None:
     @tanjun.as_message_command_group("uwu group")
     async def message_command_group(ctx: tanjun.abc.MessageContext) -> None: ...
 
@@ -84,7 +83,7 @@ def message_command_group_example():
     ) -> None: ...
 
 
-def user_menu_example():
+def user_menu_example() -> None:
     @tanjun.as_user_menu("Yeet user")
     async def user_menu(
         ctx: tanjun.abc.MenuContext, user: hikari.InteractionMember
@@ -93,7 +92,7 @@ def user_menu_example():
         await ctx.respond(f"{user} got yeeted!", delete_after=30)
 
 
-def message_menu_example():
+def message_menu_example() -> None:
     @tanjun.as_message_menu("Archive", dm_enabled=False)
     async def message_menu(
         ctx: tanjun.abc.MenuContext, message: hikari.Message
@@ -112,7 +111,7 @@ def message_menu_example():
         await ctx.respond("Archived message", delete_after=30)
 
 
-def muti_command_example():
+def muti_command_example() -> None:
     @tanchan.doc_parse.with_annotated_args(follow_wrapped=True)
     @tanchan.doc_parse.as_slash_command()
     @tanjun.as_message_command("meow command")
@@ -129,14 +128,14 @@ def muti_command_example():
         await ctx.respond(f"Thing done to {user}")
 
 
-def load_from_scope():
+def load_from_scope() -> None:
     @tanjun.as_slash_command("name", "description")
     async def slash_command(ctx: tanjun.abc.SlashContext) -> None: ...
 
     component = tanjun.Component().load_from_scope()
 
 
-def load_with_command():
+def load_with_command() -> None:
     component = tanjun.Component()
 
     @component.with_command(follow_wrapped=True)
@@ -150,7 +149,7 @@ def load_with_command():
     component.add_command(other_command)
 
 
-def make_loader():
+def make_loader() -> None:
     component = tanjun.Component()
 
     # ...
@@ -158,7 +157,7 @@ def make_loader():
     loaders = component.make_loader()
 
 
-def tanjun_client():
+def tanjun_client() -> None:
     bot = hikari.GatewayBot("Token")
     (
         tanjun.Client.from_gateway_bot(bot, declare_global_commands=True)
@@ -169,7 +168,7 @@ def tanjun_client():
     bot.run()
 
 
-def hot_reloader():
+def hot_reloader() -> None:
     bot = hikari.GatewayBot("Token")
     client = tanjun.Client.from_gateway_bot(bot)
 
