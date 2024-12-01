@@ -1,6 +1,0 @@
--r ../piped/python/base-requirements/nox.in
--r ../piped/python/base-requirements/type-checking.in
-fastapi>=0.92.0
-hikari-tanjun>=2.11
-hikari-yuyo>=1.11.0a1
-tanchan>=0.2.2
