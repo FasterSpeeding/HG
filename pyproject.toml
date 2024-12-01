@@ -66,7 +66,7 @@ allow_redefinition = true
 disable_error_code = ["no-untyped-def", "type-abstract"]
 
 [tool.piped]
-default_sessions = ["reformat", "verify-markup",  "flake8", "spell-check",  "type-check"]
+default_sessions = ["reformat", "verify-markup", "lint", "spell-check",  "type-check"]
 hide = [
     "slot-check",
     "build",
@@ -95,7 +95,6 @@ BRANCH_PUSHES = ["master"]
 [tool.piped.github_actions.type_check]
 [tool.piped.github_actions.update_licence]
 [tool.piped.github_actions.upgrade_locks]
-[tool.piped.github_actions.verify_locks]
 
 [tool.pyright]
 include = ["docs_src", "noxfile.py"]
@@ -155,9 +154,6 @@ ignore = [
 "noxfile.py" = [
     "F403",  # `from noxfile import *` used; unable to detect undefined name
 ]
-# "examples/**/*.py" = [
-#     "FBT001",  # Boolean-typed positional argument in function definition
-# ]
 
 [tool.ruff.lint.mccabe]
 max-complexity = 20
