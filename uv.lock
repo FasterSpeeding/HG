@@ -1,5 +1,9 @@
 version = 1
 requires-python = ">=3.10, <3.14"
+resolution-markers = [
+    "python_full_version >= '3.11'",
+    "python_full_version < '3.11'",
+]
 
 [[package]]
 name = "aiohappyeyeballs"
@@ -104,12 +108,30 @@ wheels = [
 name = "alluka"
 version = "0.3.3"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version < '3.11'",
+]
 dependencies = [
-    { name = "typing-extensions" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/70/85/9ff6e496788aba9b74bc46c97fc77e53d4eb7b98fb416a0737e2ce5cb81e/alluka-0.3.3.tar.gz", hash = "sha256:92d254d7ab073275ce385bb1a2c4bec1c4eb26bbfd2aae7b57e5f8554cb4a037", size = 266495 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ec/d9/67f23fbb6615b60c957d0b57b83e08c077474e70afc29abf77dda0ba35db/alluka-0.3.3-py3-none-any.whl", hash = "sha256:4d686949e1c28a23831584aec1ea7151c2e2234bb6369115e7c421a2af6cce7d", size = 69624 },
+]
+
+[[package]]
+name = "alluka"
+version = "0.4.0"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.11'",
+]
+dependencies = [
+    { name = "typing-extensions", marker = "python_full_version >= '3.11'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/d5/ca/042a60f53edef08475b335014ccf1c29bdfcdaf7a952c1b18618d4dedddb/alluka-0.4.0.tar.gz", hash = "sha256:25ca19ffe47eab876ea1a6cc118af9b30dd075ac1bf706a248750ab38e0c5c9b", size = 218656 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/74/ff/a3eb3861e9203d35f8ad9ec06e5d20d871a39848b838a53f7675f76a5838/alluka-0.4.0-py3-none-any.whl", hash = "sha256:758f4d0623dc8e895949fedac8e9fb124cfdd412b9608ab5eba7f8db316692e0", size = 27037 },
 ]
 
 [[package]]
@@ -537,12 +559,14 @@ templating = [
 ]
 type-checking = [
     { name = "fastapi" },
-    { name = "hikari-tanjun" },
+    { name = "hikari-tanjun", version = "2.17.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "hikari-tanjun", version = "2.17.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "hikari-yuyo" },
     { name = "mypy" },
     { name = "nox" },
     { name = "pyright" },
-    { name = "tanchan" },
+    { name = "tanchan", version = "0.4.2", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "tanchan", version = "0.4.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
 ]
 
 [package.metadata]
@@ -600,10 +624,13 @@ wheels = [
 name = "hikari-tanjun"
 version = "2.17.6"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version < '3.11'",
+]
 dependencies = [
-    { name = "alluka" },
-    { name = "hikari" },
-    { name = "typing-extensions" },
+    { name = "alluka", version = "0.3.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "hikari", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/a0/b5/32fe9379ffe609557c8077c710268217d479595c881ca425f86e08de6da8/hikari_tanjun-2.17.6.tar.gz", hash = "sha256:cd09fed2ae51b93764e48070053fbfb2ab80ba19041e6465a5723a75bb8fe20e", size = 620288 }
 wheels = [
@@ -611,11 +638,29 @@ wheels = [
 ]
 
 [[package]]
+name = "hikari-tanjun"
+version = "2.17.7"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.11'",
+]
+dependencies = [
+    { name = "alluka", version = "0.4.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "hikari", marker = "python_full_version >= '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version >= '3.11'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/44/e8/3641caf8df44193582e606e0538d0b8aed08416f49b08212cbe448233e1a/hikari_tanjun-2.17.7.tar.gz", hash = "sha256:163a82866677de048e125b1226216ba20909ed6bf71a0f6e9f4a6893708cbc71", size = 581303 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a6/bc/b6dfcd148abaa4e2b06b4144973a54d8f5246a7130a08a5cdaef272513a2/hikari_tanjun-2.17.7-py3-none-any.whl", hash = "sha256:f7cc3e55ab9fb3fae04d971a80781b007ede840c626be929743760bd0b9281d0", size = 213209 },
+]
+
+[[package]]
 name = "hikari-yuyo"
 version = "1.23.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "alluka" },
+    { name = "alluka", version = "0.3.3", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "alluka", version = "0.4.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
     { name = "hikari" },
     { name = "typing-extensions" },
 ]
@@ -1682,13 +1727,32 @@ wheels = [
 name = "tanchan"
 version = "0.4.2"
 source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version < '3.11'",
+]
 dependencies = [
-    { name = "hikari-tanjun" },
-    { name = "typing-extensions" },
+    { name = "hikari-tanjun", version = "2.17.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/bd/aa/4a1ce35d96ed4863d29fdf7ab274560f5e39f4df3905118ffc830d33ce1d/tanchan-0.4.2.tar.gz", hash = "sha256:bbe8388e0117afa1a20fb781f1c96ab2f828303dd8815081e703cfe9ed6abd3a", size = 286795 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/22/df/9db5ec6820d28f162c3e8ac50cbe45cf18a540e6aeeb7c82b930bf9cb2dd/tanchan-0.4.2-py3-none-any.whl", hash = "sha256:a4f133745deacdac1b1aad351c13d99103be48e10822198d70ac6530c79b9d79", size = 78246 },
+]
+
+[[package]]
+name = "tanchan"
+version = "0.4.3"
+source = { registry = "https://pypi.org/simple" }
+resolution-markers = [
+    "python_full_version >= '3.11'",
+]
+dependencies = [
+    { name = "hikari-tanjun", version = "2.17.7", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version >= '3.11'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/57/ef/a4a6033e6539a5c86e24b9e2156a8a604551aca30cf295daa6a278066663/tanchan-0.4.3.tar.gz", hash = "sha256:906f6f16c297e477dc51ea38af9a3d46de1df12032ab604289c4eae58a972842", size = 245614 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/33/35/1a082c1082827e9079c67af18f697d5101b5e2f081aedaf6ea8228793476/tanchan-0.4.3-py3-none-any.whl", hash = "sha256:3076252f3b1e648592490b9e72ba7d089d561e0482c871245828aaee6b9e9288", size = 35008 },
 ]
 
 [[package]]
