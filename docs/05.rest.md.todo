@@ -1,3 +1,10 @@
 # REST
 
-Coming soon.
+The REST client is important for performing actions on Discord and retrieving
+data on demand.
+
+Something something can't cover all the REST methods, an exclusive list can be found at
+<doc link>. Remember that all these methods should be accesed at an instance of the rest client
+(e.g. `bot.rest`/`client.rest`)
+
+### Sending messages
